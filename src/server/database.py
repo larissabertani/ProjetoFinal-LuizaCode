@@ -25,6 +25,7 @@ async def connect_db():
         tls=True,
         tlsAllowInvalidCertificates=True
     )
+    
     db.users_collection = db.client.shopping_cart.users
     db.address_collection = db.client.shopping_cart.address
     db.product_collection = db.client.shopping_cart.products

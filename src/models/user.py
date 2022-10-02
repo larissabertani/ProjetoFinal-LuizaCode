@@ -1,11 +1,9 @@
+import email
+
+
 async def create_user(users_collection, user):
     try:
-        user = await users_collection.insert_one(user)
-
-        if user.inserted_id:
-            user = await get_user(users_collection, user.inserted_id)
-            return user
-
+        return await users_collection.insert_one(user)
     except Exception as e:
         print(f'create_user.error: {e}')
  

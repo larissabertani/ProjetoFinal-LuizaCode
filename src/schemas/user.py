@@ -7,6 +7,7 @@ from src.utils.pydantic_objectId import PyObjectId
 
 class UserSchema(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    name: str
     email: EmailStr = Field(unique=True, index=True)
     password: str
     is_active: bool = Field(default=True)
@@ -21,5 +22,6 @@ class UserSchema(BaseModel):
         json_encoders = {ObjectId: str}
 
 class UserUpdate(BaseModel):
+    name: Optional[str]
     email: Optional[EmailStr]
     password: Optional[str]
