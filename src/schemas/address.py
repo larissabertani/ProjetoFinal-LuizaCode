@@ -4,10 +4,12 @@ from bson import ObjectId
 from bson.objectid import ObjectId
 
 from src.schemas.user import UserSchema
+from src.utils.pydantic_objectId import PyObjectId
 
 
 class Address(BaseModel):
     street: str
+    number: int
     zipcode: str
     district: str
     city: str
@@ -17,8 +19,9 @@ class Address(BaseModel):
 
 
 class AddressSchema(BaseModel):
+    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     user: UserSchema
-    address: List[Address] = []
+    addresses: List[Address] = []
     
 class Config:
         arbitrary_types_allowed = True
@@ -32,9 +35,10 @@ class Config:
                         "is_active": True,
                         "is_admin": False
                     },
-                    "address" : [
+                    "addresses" : [
                         {
                             "street": "i dont know",
+                            "number": 13,
                             "zipcode": "9999-030",
                             "district": "Grass Lands",
                             "city": "stark tower",
@@ -43,6 +47,7 @@ class Config:
                         }, 
                         {
                             "street": "testing",
+                            "number": 21,
                             "zipcode": "01020-040",
                             "district": "testing ",
                             "city": "example testing",

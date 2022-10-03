@@ -49,12 +49,8 @@ async def update_user(users_collection, user_id, user_data):
         print(f'update_user.error: {e}')
 
 
-async def delete_user(users_collection, user_id):
+async def delete_user(users_collection, user_email):
     try:
-        user = await users_collection.delete_one(
-            {'_id': user_id}
-        )
-        if user.deleted_count:
-            return {'status': 'User deleted'}
+        return await users_collection.delete_one({'email': user_email})
     except Exception as e:
         print(f'delete_user.error: {e}')

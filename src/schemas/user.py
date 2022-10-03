@@ -6,7 +6,7 @@ from src.utils.pydantic_objectId import PyObjectId
 
 
 class UserSchema(BaseModel):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    id: PyObjectId | str = Field(default_factory=PyObjectId, alias="_id")
     name: str
     email: EmailStr = Field(unique=True, index=True)
     password: str
@@ -20,8 +20,13 @@ class UserSchema(BaseModel):
         allow_population_by_field_name = True
         arbitrary_types_allowed = True  # required for the _id
         json_encoders = {ObjectId: str}
+        smart_union = True
 
 class UserUpdate(BaseModel):
     name: Optional[str]
     email: Optional[EmailStr]
     password: Optional[str]
+    
+class UserResponse(BaseModel):
+    description: str
+    result: Optional[UserSchema] = None

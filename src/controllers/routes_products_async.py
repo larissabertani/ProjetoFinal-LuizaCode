@@ -1,31 +1,48 @@
+from urllib import response
 from fastapi.encoders import jsonable_encoder
 from fastapi import APIRouter, Request, Body, status
 
-from src.models.product import create_product, delete_product, get_product
-from src.schemas.product import ProductSchema
+import src.rules.product_rules as product_rules
+from src.schemas.product import ProductResponse, ProductSchema, ProductResponse
 
 
 router = APIRouter()
 
 
 # create product
-
-@router.post("/", response_description="Create a new product", status_code=status.HTTP_201_CREATED,
-             response_model=ProductSchema)
+@router.post("/", response_description="Create a new product", response_model=ProductResponse)
 async def route_post_product(requests: Request, new_product: ProductSchema = Body(...)):
     new_product = jsonable_encoder(new_product)
-    creating = await create_product(requests.app.database.product_collection, new_product)
-    return creating
+    response = await product_rules.create_product(requests.app.database.product_collection, new_product)
+    return await process_product_response(response)
+    
 
-# delete product by id
+# get product by name
+@router.get("/name/", response_description="Get a product by name", response_model=ProductResponse)
+async def route_get_product_by_name(request: Request, name: str = Body(...)):
+    response = await product_rules.get_product_by_name(request.app.database.product_collection, name)
+    return await process_product_response(response)
 
+# get product by code
+@router.get("/code/{code}", response_description="Get a product by code", response_model=ProductResponse)
+async def route_get_product_by_code(code: int, request: Request):
+    response = await product_rules.get_product_by_code(request.app.database.product_collection, code)
+    return await process_product_response(response)
 
-@router.delete("/{id}", response_description="Delete a product")
-async def route_delete_product(id: str, request: Request):
-    return await delete_product(request.app.database.product_collection, id)
+# update product by code
+@router.put("/{code}", response_description="Update a product by code", response_model=ProductResponse)
+async def route_update_product_by_code(code: int, request: Request):
+    response = await product_rules.get_product_by_code(request.app.database.product_collection, code)
+    return await process_product_response(response)
 
+# delete product by code
+@router.delete("/{code}", response_description="Delete a product")
+async def route_delete_product(code: int, request: Request):
+    response = await product_rules.delete_product(request.app.database.product_collection, code)
+    return await process_product_response(response)
 
-# get product by id
-@router.get("/{id}", response_model=ProductSchema)
-async def route_get_product_by_id(id: str, request: Request):
-    return await get_product(request.app.database.product_collection, id)
+# process result
+async def process_product_response(response):
+    if type(response) == str:
+        return ProductResponse(description = response)
+    return ProductResponse(description = 'OK', result = response)

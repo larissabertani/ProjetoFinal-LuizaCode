@@ -1,69 +1,42 @@
-from src.models.user import get_user
 
+async def create_user_address(address_collection, user_address):
+    try:
+        return await address_collection.insert_one(user_address) 
+    except Exception as e:
+        print(f'create_address.error: {e}')
 
-async def create_address(address_collection, users_collection, user_id, new_address = []):
+async def update_address(address_collection, id_user_address, addresses):
     try:
-        user = await get_user(users_collection, user_id)
-        if (not user):
-            return 
-       
-            
-        AddressSchema = await get_address_by_user(address_collection, user_id) 
-        list_of_add = []   
-        
-        
-        if (not AddressSchema):
-            AddressSchema = await address_collection.insert_one({
-                "user": user,
-                "address": new_address
-            })
-            list_of_add = new_address
-        
-        else:
-            for new_ad in new_address:
-             if new_ad not in AddressSchema["address"]:
-                    list_of_add.append(new_ad)
-                    AddressSchema["address"].append(new_ad)
-                    
-            if list_of_add != []: 
-                address_collection.update_one(
-                {'_id': AddressSchema["_id"]},
-                {'$set': {
-                    "address": AddressSchema["address"]
-                }}
-            )
-               
-        return list_of_add
-                         
+        return await address_collection.update_one({'_id': id_user_address}, {'$set': { "addresses": addresses}})
     except Exception as e:
-        print(f'create_user.error: {e}')
+        print(f'update_addresses.error: {e}')
         
-async def get_address_by_user(address_collection, user_id):
+async def get_address_by_user(address_collection, user_email):
     try:
-        data = await address_collection.find_one({'user._id': user_id})
-        if data:
-            return data
+        return await address_collection.find_one({'user.email': user_email})
     except Exception as e:
-        print(f'get_user.error: {e}')
+        print(f'get_address_by_user.error: {e}')
+        
+async def get_address_by_id(address_collection, user_address_id):
+    try:
+        return await address_collection.find_one({'_id': user_address_id})
+    except Exception as e:
+        print(f'get_address_by_id.error: {e}')
         
 async def get_one_address(address_collection, user_id):
     find_address = await get_address_by_user(address_collection, user_id)
     
     if find_address:
-        for add in find_address["address"]:
+        for add in find_address["addresses"]:
             if add["is_delivery"]:
                 return add
     return "FALHA"  
 
-# async def delete_address(address_collection):
-#     try:
-#         address = address_collection.delete_one(
-#             {'_id': address["_id"]}
-#         )
-#         if address.deleted_count:
-#             return {'status': 'Address deleted'}
-#     except Exception as e:
-#         return f'delete_address.error: {e}'
+async def delete_address(address_collection, user_email):
+    try:
+        return await address_collection.delete_one({'user.email': user_email})
+    except Exception as e:
+        return f'delete_address.error: {e}'
     
     
     

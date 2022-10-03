@@ -1,0 +1,37 @@
+
+# PRODUCT
+
+### create a product
+POST http://127.0.0.1:8000/products/ HTTP/1.1
+Content-Type: application/json
+
+{ 
+  "name": "Ração Premier",
+  "description": "Raças Específicas Lhasa Apso Cães Adultos",
+  "price": 124.9,
+  "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
+  "code": 1234,
+  "type_animal": "dog",
+  "category": "food",
+  "qt_stock": 15
+}
+
+### get product by name of the product
+GET http://127.0.0.1:8000/products/name/ HTTP/1.1
+Content-Type: application/json
+
+{ 
+  "name": "Ração Premier"
+}
+
+### get product by code of the product
+GET http://127.0.0.1:8000/products/code/1234 HTTP/1.1
+Content-Type: application/json
+
+### update product by code of the product
+PUT http://127.0.0.1:8000/products/code/1234 HTTP/1.1
+Content-Type: application/json
+
+### delete product by code of the product
+DELETE HTTP://127.0.0.1:8000/products/1234 HTTP/1.1
+Content-Type: application/json
