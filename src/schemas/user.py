@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, SecretStr
 from pydantic.networks import EmailStr
 from bson.objectid import ObjectId
 from src.utils.pydantic_objectId import PyObjectId
@@ -9,7 +9,7 @@ class UserSchema(BaseModel):
     id: PyObjectId | str = Field(default_factory=PyObjectId, alias="_id")
     name: str
     email: EmailStr = Field(unique=True, index=True)
-    password: str
+    password: SecretStr = Field(...)
     is_active: bool = Field(default=True)
     is_admin: bool = Field(default=False)
     
