@@ -31,19 +31,9 @@ async def get_products(products_collection, skip, limit):
     except Exception as e:
         print(f'get_products.error: {e}')
 
-async def update_product(products_collection, product_code, product_data):
+async def update_product(products_collection, product_code, product):
     try:
-        data = {k: v for k, v in product_data.items() if v is not None}
-
-        product = await products_collection.update_one(
-            {'code': product_code},
-            {'$set': data}
-        )
-
-        if product.modified_count:
-            return True, product.modified_count
-
-        return False, 0
+        return await products_collection.update_one({'code': product_code}, {'$set': product})
     except Exception as e:
         print(f'update_product.error: {e}')
 

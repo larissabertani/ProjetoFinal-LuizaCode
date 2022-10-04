@@ -37,3 +37,12 @@ class ProductSchema(BaseModel):
 class ProductResponse(BaseModel):
     description: str
     result: Optional[ProductSchema] = None
+    
+class ProductUpdate(BaseModel):
+    name: str = Field(max_length=100)
+    description: str
+    price: float
+    image: str
+    type_animal: str
+    category: str
+    qt_stock: int

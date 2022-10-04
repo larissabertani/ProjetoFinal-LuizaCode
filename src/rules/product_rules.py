@@ -37,8 +37,14 @@ async def get_product_by_name(products_collection, product_name):
         return product
     return "Não existe produto com este nome!"
 
-async def update_product(products_collection, product_code, product_data):
-    return await product_models.update_product(products_collection, product_code, product_data)
+async def update_product(products_collection, product_code, product):
+    product_storaged = await product_models.get_product_by_code(products_collection, product_code)
+    if product_storaged:
+        product_updated = await product_models.update_product(products_collection, product_code, product.dict())
+        if product_updated.modified_count:
+            return "Produto alterado com sucesso!"
+        return "Erro ao atualizar o produto!"
+    return "Não existe produto com o código informado!"
 
 async def delete_product(product_collection, product_code):    
     product = await product_models.delete_product(product_collection, product_code)

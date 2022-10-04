@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel, Field
 from bson import ObjectId
 from bson.objectid import ObjectId
@@ -57,3 +57,7 @@ class Config:
                       ]
             }
         }
+
+class AddressResponse(BaseModel):
+    description: str
+    result: Optional[AddressSchema] = None

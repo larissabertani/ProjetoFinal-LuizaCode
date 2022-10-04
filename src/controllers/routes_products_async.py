@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi import APIRouter, Request, Body, status
 
 import src.rules.product_rules as product_rules
-from src.schemas.product import ProductResponse, ProductSchema, ProductResponse
+from src.schemas.product import ProductResponse, ProductSchema, ProductResponse, ProductUpdate
 
 
 router = APIRouter()
@@ -18,8 +18,8 @@ async def route_post_product(requests: Request, new_product: ProductSchema = Bod
     
 
 # get product by name
-@router.get("/name/", response_description="Get a product by name", response_model=ProductResponse)
-async def route_get_product_by_name(request: Request, name: str = Body(...)):
+@router.get("/name/{name}", response_description="Get a product by name", response_model=ProductResponse)
+async def route_get_product_by_name(request: Request, name: str):
     response = await product_rules.get_product_by_name(request.app.database.product_collection, name)
     return await process_product_response(response)
 
@@ -31,8 +31,8 @@ async def route_get_product_by_code(code: int, request: Request):
 
 # update product by code
 @router.put("/{code}", response_description="Update a product by code", response_model=ProductResponse)
-async def route_update_product_by_code(code: int, request: Request):
-    response = await product_rules.get_product_by_code(request.app.database.product_collection, code)
+async def route_update_product_by_code(code: int, request: Request, product: ProductUpdate = Body(...)):
+    response = await product_rules.update_product(request.app.database.product_collection, code, product)
     return await process_product_response(response)
 
 # delete product by code
