@@ -28,7 +28,7 @@ Este projeto teve como objetivo o desenvolvimento de um carrinho de compras volt
 e o [MongoDB](https://www.mongodb.com/), tecnologias trabalhadas durante o bootcamp.
 
 
-## <a name=""></a> Título e Imagem de capa # 
+## Título e Imagem de capa
 
 
 
