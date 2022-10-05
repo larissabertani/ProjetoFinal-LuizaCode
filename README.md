@@ -1,41 +1,37 @@
-<h1>Projeto final - 5ª edição LuizaCode</h1>
 
-<h3>Carrinho de compras - Petshop</h3>
+<h1 id="capa">Projeto final - 5ª edição LuizaCode</h1>
 
+<h2 id="subtitulo">Carrinho de compras - Petshop</h2>
 
-<h5>Grupo 9:</h5>
-<h6>Ana Vitória</h6>
-<h6>Camila Reis</h6>
-<h6>Larissa</h6>
-<h6>Maisa Pacheco</h6>
-<h6>Siomara Murta</h6>
+<h3 id="índice">Índice</h3>
 
-
-* [Título e Imagem de capa](#Título-e-Imagem-de-capa) 
-* [Badges](#badges)
+* [Capa](#capa)
+* [Subtítulo](#subtitulo)
 * [Índice](#índice)
+* [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
 * [Descrição do Projeto](#descrição-do-projeto)
 * [Status do Projeto](#status-do-Projeto)
 * [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
 * [Acesso ao Projeto](#acesso-ao-projeto)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
-* [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
 * [Licença](#licença)
 * [Conclusão](#conclusão)
 
-Este projeto teve como objetivo o desenvolvimento de um carrinho de compras voltado ao mercado Pet utilizando o [FastAPI](https://fastapi.tiangolo.com/)
-e o [MongoDB](https://www.mongodb.com/), tecnologias trabalhadas durante o bootcamp.
+<h3 id="descrição-do-projeto">Descrição do projeto</h3>
+<br/>
+<p>Este projeto teve como objetivo o desenvolvimento de um carrinho de compras voltado ao mercado Pet utilizando o [FastAPI](https://fastapi.tiangolo.com/)
+e o [MongoDB](https://www.mongodb.com/), tecnologias trabalhadas durante o bootcamp.</p>
+<br/>
+<h3 id="pessoas-desenvolvedoras">Pessoas Desenvolvedoras do Projeto:</h3>
 
+<h5>Ana Vitória</h5>
+<h5>Camila Reis</h5>
+<h5>Larissa</h5>
+<h5>Maisa Pacheco</h5>
+<h5>Siomara Murta</h5>
 
-## Título e Imagem de capa
-
-
-
-
-
-
-
+<br/>
 
 
 
