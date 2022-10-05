@@ -1,12 +1,8 @@
 
 
 ## creating a cart associated with the user, passing id_usuario
-POST http://127.0.0.1:8000/cart/632b768a78d2d3fcd54dee2a HTTP/1.1
+POST http://127.0.0.1:8000/cart/633cb6a8d5f20373e15ca2c6 HTTP/1.1
 Content-Type: application/json
-
-
-
-
 
 ###
 ### adding product to the cart, passing as parameter the cart id and the product in the body

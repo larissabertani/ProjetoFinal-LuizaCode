@@ -19,13 +19,14 @@ class Address(BaseModel):
 
 
 class AddressSchema(BaseModel):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    # id: PyObjectId | str = Field(default_factory=PyObjectId, alias="_id")
     user: UserSchema
     addresses: List[Address] = []
     
 class Config:
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
+        smart_union = True
         schema_extra = {
             "example": {
                   "user": {

@@ -4,6 +4,7 @@ from src.controllers.routes_products_async import router as product_route
 from src.controllers.routes_address_async import router as address_route
 from src.controllers.routes_order_async import router as order_route
 from src.controllers.routes_order_item_async import router as order_item_route
+from src.controllers.routes_cart import router as route_cart
 from fastapi import FastAPI, Request
 from os import environ
 from pymongo import MongoClient
@@ -28,7 +29,7 @@ async def shutdown_db_client():
 app.include_router(user_route, tags=["users"], prefix="/users")
 app.include_router(product_route, tags=["products"], prefix="/products")
 app.include_router(address_route, tags=["address"], prefix="/address")
-app.include_router(order_route, tags=["cart"], prefix="/cart")
+app.include_router(route_cart, tags=["cart"], prefix="/cart")
 app.include_router(order_item_route, tags=["cart_item"], prefix="/cart_item")
 
 

@@ -26,8 +26,8 @@ async def route_address(user_email: str, request: Request, new_address: List[Add
 @router.get("/{user_email}", response_description="get address by user email", response_model=List[Address])
 async def route_get_address(user_email: str, request: Request):
     user_address = await address_rules.get_address_by_user(request.app.database.address_collection, user_email)
-    response = user_address['addresses']
-    return await process_address_response(response)
+    return user_address['addresses']
+    # return response
 
 # Deletar endereço do usuário passando email
 @router.delete("/{email}", response_description="delete a address")

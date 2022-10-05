@@ -31,10 +31,10 @@ async def create_cart(order_collection, users_collection, address_collection, us
             address = await get_one_address(address_collection, user_id)
             if address == "FALHA":
                 return {"error": "user address not found"}
-            cart_data = {
+            cart_data = { # adicionar produto e quantidade flag no carrinho se aberto true  e verificar se há carrinho no banco aberto/fechado de acordo com usuário
                 "user": user,
                 "price": 0,
-                "address": address,
+                "address": address, # endereço no order
                 "paid": False,
                 "create": datetime.now(),
                 "authority": ""

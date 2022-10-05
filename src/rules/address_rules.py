@@ -4,6 +4,7 @@ Regras e ajustes para endereços de clientes
 """
 import src.models.address as address_models
 import src.models.user as user_models
+from fastapi import HTTPException
 
 async def create_user_address(address_collection, users_collection, user_email, new_address):# = []):
     user = await user_models.get_user_by_email(users_collection, user_email)
@@ -33,11 +34,13 @@ async def get_address_by_user(address_collection, user_email):
     user_address = await address_models.get_address_by_user(address_collection, user_email)
     if user_address:
         return user_address
-    return "Não há usuário cadastrado com este email!"
+    raise HTTPException(status_code=404, detail="Não há usuário cadastrado com este email!")
+    # return "Não há usuário cadastrado com este email!"
 
 async def delete_address(address_collection, user_email):
     address = await address_models.delete_address(address_collection, user_email)
     if address.deleted_count:
         return "Endereço deletado com sucesso!"
-    return "Não há endereço para ser deletado para este usuário!"
+    raise HTTPException(status_code=404, detail="Não há endereço para ser deletado para este usuário!")
+    #return "Não há endereço para ser deletado para este usuário!"
     
