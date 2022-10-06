@@ -16,7 +16,7 @@ async def route_get_user(requests: Request):
     return await user_rules.get_users(requests.app.database.users_collection, 0, 2)
 
 # criar um usuário
-@router.post("/", response_description="Create an user", response_model=UserResponse)
+@router.post("/", response_description="Create an user", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def route_create_user(requests: Request, new_user: UserSchema = Body(...)):
     new_user = jsonable_encoder(new_user)
     response = await user_rules.create_user(requests.app.database.users_collection, new_user)
