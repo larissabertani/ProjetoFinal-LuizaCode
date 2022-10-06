@@ -25,7 +25,7 @@ async def route_create_user(requests: Request, new_user: UserSchema = Body(...))
 # Retornar um usuário pelo id
 @router.get("/{id}", response_description="Get a user by id", response_model=UserResponse)
 async def route_get_by_id(id: str, request: Request):
-    response = await user_rules.get_user(request.app.database.users_collection, ObjectId(str(id)))
+    response = await user_rules.get_user(request.app.database.users_collection, id)
     return await process_user_response(response)
 
 # Retornar um usuário pelo email

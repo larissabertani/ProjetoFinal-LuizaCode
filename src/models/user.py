@@ -10,9 +10,7 @@ async def create_user(users_collection, user):
 
 async def get_user(users_collection, user_id):
     try:
-        data = await users_collection.find_one(user_id)
-        if data:
-            return data
+        return await users_collection.find_one({"_id": user_id})
     except Exception as e:
         print(f'get_user.error: {e}')
  

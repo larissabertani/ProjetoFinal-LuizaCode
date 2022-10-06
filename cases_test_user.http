@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### get user by id
-GET http://127.0.0.1:8000/users/633a24fc604fd6c2c55676cb HTTP/1.1
+GET http://127.0.0.1:8000/users/633cb6a8d5f20373e15ca2c6 HTTP/1.1
 Content-Type: application/json
 
 ### get user by email

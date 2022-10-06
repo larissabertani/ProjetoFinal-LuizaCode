@@ -29,7 +29,7 @@ PUT http://127.0.0.1:8000/products/1243 HTTP/1.1
 Content-Type: application/json
 
 { 
-  "name": "Ração Premier",
+  "name": "Ração Premier 2",
   "description": "Raças Específicas Lhasa Apso Cães Adultos",
   "price": 124.9,
   "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
