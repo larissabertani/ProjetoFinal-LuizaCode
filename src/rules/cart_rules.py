@@ -87,6 +87,14 @@ async def delete_product_all_cart(carts_collection, product_code: int):
             return "Produto removido dos carrinhos com sucesso!"
         return "Não existem produtos com este código nos carrinhos"
     except Exception as e:
-        print(f'delete_product_all_cart.error: {e}')        
+        print(f'delete_product_all_cart.error: {e}') 
+        
+# Deletar carrinho do usuário        
+async def delete_cart(carts_collection, user_email):
+    cart = await cart_models.delete_cart(carts_collection, user_email)
+    if cart.deleted_count:
+        return "Carrinho deletado com sucesso!"
+    # raise HTTPException(status_code=404, detail="Não há carrinho para ser deletado para este usuário!")
+    return "Não há carrinho para ser deletado para este usuário!"       
         
     

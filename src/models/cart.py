@@ -36,6 +36,14 @@ async def delete_product_all_cart(carts_collection, product_code: int):
         return await carts_collection.update_many({}, {"$pull": {"cart_items": { "product.code": product_code}}})
     except Exception as e:
         print(f'delete_product_all_cart.error: {e}')    
+        
+# Deletar carrinho
+async def delete_cart(carts_collection, user_email):
+    try:
+    #    cart = jsonable_encoder(cart)
+        return await carts_collection.delete_one({'user.email': user_email})
+    except Exception as e:
+        return f'delete_cart.error: {e}'
     
     
     
