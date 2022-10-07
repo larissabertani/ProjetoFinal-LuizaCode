@@ -3,6 +3,7 @@ Regras e ajustes para carrinhos
 
 """
 
+from fastapi import HTTPException
 from src.models.user import get_user
 from src.models.product import get_product_by_code
 from src.schemas.cart import CartItemsSchema, CartSchema
@@ -64,4 +65,12 @@ async def get_cart(carts_collection, user_id):
     if cart:
         return cart
     return "Este id não possui carrinho aberto!"
+
+
+async def delete_cart(carts_collection, user_email):
+    cart = await cart_models.delete_cart(carts_collection, user_email)
+    if cart.deleted_count:
+        return "Carrinho deletado com sucesso!"
+    # raise HTTPException(status_code=404, detail="Não há carrinho para ser deletado para este usuário!")
+    return "Não há carrinho para ser deletado para este usuário!"
     
