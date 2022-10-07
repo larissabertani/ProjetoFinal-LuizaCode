@@ -10,7 +10,7 @@ router = APIRouter()
 
 
 # create product
-@router.post("/", response_description="Create a new product", response_model=ProductResponse)
+@router.post("/", response_description="Create a new product", response_model=ProductResponse, status_code=status.HTTP_201_CREATED)
 async def route_post_product(requests: Request, new_product: ProductSchema = Body(...)):
     new_product = jsonable_encoder(new_product)
     response = await product_rules.create_product(requests.app.database.product_collection, new_product)

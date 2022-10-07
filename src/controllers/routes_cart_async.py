@@ -41,3 +41,10 @@ async def process_cart_response(response):
         return CartResponse(description = response)
     return CartResponse(description = 'OK', result = response)
 
+
+# deletar carrinho
+@router.delete("/{user_email}", response_description="delete a cart")
+async def route_delete_cart(user_email: str, requests: Request):
+    response = await cart_rules.delete_cart(requests.app.database.carts_collection, user_email)
+    return await process_cart_response(response)
+

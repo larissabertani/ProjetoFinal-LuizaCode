@@ -7,6 +7,7 @@ from typing import List
 import src.models.user as user_models
 import src.models.address as address_models
 from src.schemas.user import UserSchema
+import src.models.cart as cart_models
 
 
 async def create_user(users_collection, user):
@@ -44,8 +45,9 @@ async def update_user(users_collection, user_id, user_data):
         return "Usuário alterado com sucesso!"
     return "Erro ao atualizar o usuário!"
                   
-async def delete_user(users_collection, address_collection, user_email):
+async def delete_user(users_collection, address_collection, carts_collection, user_email):
     await address_models.delete_address(address_collection, user_email)
+    await cart_models.delete_cart(carts_collection, user_email)
     
     user = await user_models.delete_user(users_collection, user_email)
     if user.deleted_count:

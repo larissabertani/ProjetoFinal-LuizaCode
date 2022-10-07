@@ -11,9 +11,10 @@ from src.schemas.user import UserResponse, UserSchema
 router = APIRouter()
 
 # pegar usuarios
-@router.get("/", response_model=List[UserSchema])
+@router.get("/", response_model=UserResponse)
 async def route_get_user(requests: Request):
-    return await user_rules.get_users(requests.app.database.users_collection, 0, 2)
+    response = await user_rules.get_users(requests.app.database.users_collection, 0, 2)
+    return await process_user_response(response)
 
 # criar um usuário
 @router.post("/", response_description="Create an user", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
@@ -37,7 +38,7 @@ async def route_get_by_email(email: str, request: Request):
 # deletar um usuário
 @router.delete("/{email}", response_description="delete a user")
 async def route_delete_user(email: str, requests: Request):
-    response = await user_rules.delete_user(requests.app.database.users_collection, requests.app.database.address_collection, email)
+    response = await user_rules.delete_user(requests.app.database.users_collection, requests.app.database.address_collection, requests.app.database.carts_collection, email)
     return await process_user_response(response)
 
 # process result

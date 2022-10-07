@@ -3,6 +3,7 @@ Regras e ajustes para carrinhos
 
 """
 
+from fastapi import HTTPException
 from src.models.user import get_user
 from src.models.product import get_product_by_code
 from src.schemas.cart import CartItemsSchema, CartSchema

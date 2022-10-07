@@ -1,2 +1,2 @@
 [run]
-omit = tests/*, main.py
+omit = tests/*, main.py, src/server/database.py
