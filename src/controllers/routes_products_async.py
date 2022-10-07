@@ -38,7 +38,7 @@ async def route_update_product_by_code(code: int, request: Request, product: Pro
 # delete product by code
 @router.delete("/{code}", response_description="Delete a product")
 async def route_delete_product(code: int, request: Request):
-    response = await product_rules.delete_product(request.app.database.product_collection, code)
+    response = await product_rules.delete_product(request.app.database.product_collection, request.app.database.carts_collection, code)
     return await process_product_response(response)
 
 # process result

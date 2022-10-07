@@ -6,7 +6,7 @@ Regras e ajustes para carrinhos
 from src.models.user import get_user
 from src.models.product import get_product_by_code
 from src.schemas.cart import CartItemsSchema, CartSchema
-from src.schemas.product import ProductSchema
+import src.models.product as product_models
 import src.models.cart as cart_models
 from fastapi.encoders import jsonable_encoder
 
@@ -64,4 +64,28 @@ async def get_cart(carts_collection, user_id):
     if cart:
         return cart
     return "Este id não possui carrinho aberto!"
+
+# Remover produto do carrinho do usuário
+async def delete_product_cart(carts_collection, user_id, product_code: int):
+    try:
+        cart = await cart_models.get_cart(carts_collection, user_id)
+        if cart:
+            delete_cart = await cart_models.delete_product_cart(carts_collection, cart, product_code)
+            if delete_cart.modified_count:
+                return "Produto removido do carrinho com sucesso!"
+            return "Não existe produto com este código no carrinho"
+        return "Este usuário não possui carrinho aberto."
+    except Exception as e:
+        print(f'delete_product_cart.error: {e}')
+        
+# Remover produto do carrinho de todos os usuários
+async def delete_product_all_cart(carts_collection, product_code: int):
+    try:
+        delete_cart = await cart_models.delete_product_all_cart(carts_collection, product_code)
+        if delete_cart.modified_count:
+            return "Produto removido dos carrinhos com sucesso!"
+        return "Não existem produtos com este código nos carrinhos"
+    except Exception as e:
+        print(f'delete_product_all_cart.error: {e}')        
+        
     

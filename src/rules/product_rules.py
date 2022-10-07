@@ -5,6 +5,7 @@ Regras e ajustes para produtos
 
 from itertools import product
 import src.models.product as product_models
+from src.rules.cart_rules import delete_product_all_cart
 
 async def create_product(products_collection, product):
     if product['price'] <= 0.01:
@@ -46,7 +47,8 @@ async def update_product(products_collection, product_code, product):
         return "Erro ao atualizar o produto!"
     return "Não existe produto com o código informado!"
 
-async def delete_product(product_collection, product_code):    
+async def delete_product(product_collection, carts_collection, product_code: int):    
+    await delete_product_all_cart(carts_collection, product_code)    
     product = await product_models.delete_product(product_collection, product_code)
     if product.deleted_count:
         return "Produto deletado com sucesso!"

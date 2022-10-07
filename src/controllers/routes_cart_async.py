@@ -28,6 +28,12 @@ async def route_get_cart(requests: Request, user_id):
     response = await cart_rules.get_cart(requests.app.database.carts_collection, user_id)
     return await process_cart_response(response)
 
+# Remover produto do carrinho de compra
+@router.delete("/{user_id}/{product_code}", response_description="remove a product cart", response_model=CartResponse)
+async def route_remove_item_cart(requests: Request, user_id, product_code: int):
+    response = await cart_rules.delete_product_cart(requests.app.database.carts_collection, user_id, product_code)
+    return await process_cart_response(response)
+
 
 # process result
 async def process_cart_response(response):

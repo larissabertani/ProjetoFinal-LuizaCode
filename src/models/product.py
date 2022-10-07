@@ -10,7 +10,7 @@ async def get_product_by_id(products_collection, product_id):
     except Exception as e:
         print(f'get_product_by_id.error: {e}')
         
-async def get_product_by_code(products_collection, product_code):
+async def get_product_by_code(products_collection, product_code: int):
     try:
         return await products_collection.find_one({'code': product_code})
     except Exception as e:
