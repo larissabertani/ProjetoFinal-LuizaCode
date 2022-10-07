@@ -53,3 +53,70 @@ async def test_get_user_by_email():
         assert body.get("result").get("password") == body_user.get("password")
         
         #assert body.get("result").get(0).get("name")
+
+@mark.asyncio
+async def test_get_user_by_email_undefined():
+    with TestClient(app) as client:
+        user = client.post(
+            "/user/", json={"name": "Bruna", "email": "teste1@gmail.com", "password": "265"}
+        )
+        
+        body_user = user.json().get("result")
+        response = client.get(
+            "/user/email/teste@gmail.com"
+        )
+        
+        assert response.status_code == 200
+        body = response.json()
+        assert body.get("description") == 'Este e-mail não possui cadastro!'
+        assert body.get("result") is None
+        
+@mark.asyncio
+async def test_delete_user_by_email():
+    with TestClient(app) as client:
+        user = client.post(
+            "/user/", json={"name": "Bruna", "email": "teste1@gmail.com", "password": "265"}
+        )
+        
+        body_user = user.json().get("result")
+        response = client.delete(
+            "/user/teste1@gmail.com"
+        )
+        assert response.status_code == 200
+        body = response.json()
+        assert body.get("description") == 'Usuário deletado com sucesso!'
+        assert body.get("result") is None
+        
+        
+        
+#pegar todos os usuários
+@mark.asyncio
+async def test_get_all_user():
+    with TestClient(app) as client:
+        user1 = client.post(
+              "/user/", json={"name": "Leandro", "email": "LFE@gmail.com", "password": "123"}
+        )
+        user2 = client.post(
+              "/user/", json={"name": "vitoria", "email": "airotiv@gmail.com", "password": "456"}
+        )
+        
+        body_user1 = user1.json().get("result")
+        body_user2 = user2.json().get("result")
+        response = client.get(
+            "/user/"
+        )
+        assert response.status_code == 200
+        body = response.json()
+        assert body.get("description") == "OK"
+        assert body.get("result")[0].get("name") == body_user1.get("name")
+        assert body.get("result")[0].get("email") == body_user1.get("email")
+        assert body.get("result")[0].get("password") == body_user1.get("password")
+        
+        assert body.get("result")[1].get("name") == body_user2.get("name")
+        assert body.get("result")[1].get("email") == body_user2.get("email")
+        assert body.get("result")[1].get("password") == body_user2.get("password")
+        
+        
+
+        
+    
