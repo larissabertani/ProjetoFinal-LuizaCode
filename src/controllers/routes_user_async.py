@@ -11,9 +11,10 @@ from src.schemas.user import UserResponse, UserSchema
 router = APIRouter()
 
 # pegar usuarios
-@router.get("/", response_model=List[UserSchema])
+@router.get("/", response_model=UserResponse)
 async def route_get_user(requests: Request):
-    return await user_rules.get_users(requests.app.database.users_collection, 0, 2)
+    response = await user_rules.get_users(requests.app.database.users_collection, 0, 2)
+    return await process_user_response(response)
 
 # criar um usuário
 @router.post("/", response_description="Create an user", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
