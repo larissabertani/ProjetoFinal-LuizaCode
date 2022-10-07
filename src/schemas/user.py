@@ -1,4 +1,5 @@
 from typing import Optional
+from bson import List
 from pydantic import BaseModel, Field, SecretStr
 from pydantic.networks import EmailStr
 from bson.objectid import ObjectId
@@ -29,4 +30,4 @@ class UserUpdate(BaseModel):
     
 class UserResponse(BaseModel):
     description: str
-    result: Optional[UserSchema] = None
+    result: UserSchema | List[UserSchema] = None
