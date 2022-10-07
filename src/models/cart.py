@@ -16,11 +16,20 @@ async def get_cart(carts_collection, user_id):
         print(f'get_cart.error: {e}')
         
 # Atualizar carrinho    
-async def update_cart(cart_collection, cart):
+async def update_cart(carts_collection, cart):
     try:
-        return await cart_collection.update_one({'_id': cart['_id']}, {'$set': { 'cart_items': cart['cart_items'], 'total_price': cart['total_price']}})
+        return await carts_collection.update_one({'_id': cart['_id']}, {'$set': { 'cart_items': cart['cart_items'], 'total_price': cart['total_price']}})
     except Exception as e:
         print(f'update_cart.error: {e}')
+        
+
+# Deletar carrinho
+async def delete_cart(carts_collection, user_email):
+    try:
+    #    cart = jsonable_encoder(cart)
+        return await carts_collection.delete_one({'user.email': user_email})
+    except Exception as e:
+        return f'delete_cart.error: {e}'
     
     
     
