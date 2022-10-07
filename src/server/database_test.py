@@ -11,6 +11,7 @@ class DataBase:
     product_collection = None
     order_collection = None
     order_items_collection = None
+    carts_collection = None
 
 
 db = DataBase()
@@ -31,6 +32,7 @@ async def connect_db():
     db.product_collection = db.client.shopping_cart_test.products
     db.order_collection = db.client.shopping_cart_test.orders
     db.order_items_collection = db.client.shopping_cart_test.order_items
+    db.carts_collection = db.client.shopping_cart_test.carts
 
 
 async def disconnect_db():
@@ -39,4 +41,5 @@ async def disconnect_db():
     await db.product_collection.drop()
     await db.order_collection.drop()
     await db.order_items_collection.drop()
+    await db.carts_collection.drop()  
     db.client.close()
