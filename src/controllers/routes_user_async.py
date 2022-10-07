@@ -37,7 +37,7 @@ async def route_get_by_email(email: str, request: Request):
 # deletar um usuário
 @router.delete("/{email}", response_description="delete a user")
 async def route_delete_user(email: str, requests: Request):
-    response = await user_rules.delete_user(requests.app.database.users_collection, requests.app.database.address_collection, email)
+    response = await user_rules.delete_user(requests.app.database.users_collection, requests.app.database.address_collection, requests.app.database.carts_collection, email)
     return await process_user_response(response)
 
 # process result
