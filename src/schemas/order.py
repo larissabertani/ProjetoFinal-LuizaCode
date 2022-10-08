@@ -12,7 +12,7 @@ from src.schemas.cart import CartItemsSchema
 class OrderSchema(BaseModel):
     id: PyObjectId | str = Field(default_factory=PyObjectId, alias="_id")
     user: UserSchema
-    price: Decimal = Field(max_digits=10, decimal_places=2)
+    price: Decimal #= Field(max_digits=100, decimal_places=2)
     paid: bool = Field(default=False)
     create: datetime.datetime = Field(default=datetime.datetime.now())
     address: Address

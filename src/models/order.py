@@ -10,7 +10,7 @@ async def create_order(order_collection, order):
 # Consultar os carrinhos fechados de um cliente
 async def get_order_by_email(order_collection, user_email):
     try:
-        return await order_collection.find_one({'user.email': user_email})
+        return await order_collection.find({'user.email': {"$in": user_email}})
     except Exception as e:
         print(f'get_order_by_email.error: {e}')
 

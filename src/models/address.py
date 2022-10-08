@@ -23,16 +23,16 @@ async def get_address_by_id(address_collection, user_address_id):
     except Exception as e:
         print(f'get_address_by_id.error: {e}')
         
-async def get_address_delivery_by_email(address_collection, user_email):
-    try:
-        return await address_collection.find_one({"$and": [{'user.email': user_email, 'addresses.is_delivery' : True}]})
-        #({}, {"$pull": {"cart_items": { "product.code": product_code}}})
-        #find_one({'user.email' : user_email})
-    except Exception as e:
-        print(f'get_address_by_user.error: {e}')
+# async def get_address_delivery_by_email(address_collection, user_email):
+#     try:
+#         return await address_collection.find_one({"$and": [{'user.email': user_email, 'addresses.is_delivery' : True}]})
+#         #({}, {"$pull": {"cart_items": { "product.code": product_code}}})
+#         #find_one({'user.email' : user_email})
+#     except Exception as e:
+#         print(f'get_address_by_user.error: {e}')
         
-async def get_one_address(address_collection, user_id):
-    find_address = await get_address_by_user(address_collection, user_id)
+async def get_one_address(address_collection, user_email):
+    find_address = await get_address_by_user(address_collection, user_email)
     
     if find_address:
         for add in find_address["addresses"]:

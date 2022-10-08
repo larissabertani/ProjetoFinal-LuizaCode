@@ -11,18 +11,18 @@ from fastapi.encoders import jsonable_encoder
 
 # Criar pedido
 async def create_order(order_collection, address_collection, cart, user_email):
-    user_address = await address_models.get_address_delivery_by_email(address_collection, user_email)
+    user_address = await address_models.get_one_address(address_collection, user_email)
     if user_address:
-        order = OrderSchema(user = cart['user'], price = cart['total_price'], address = user_address['addresses'][0], order_items = cart['cart_items'])
+        order = OrderSchema(user = cart['user'], price = cart['total_price'], address = user_address, order_items = cart['cart_items'])
         order = jsonable_encoder(order)
         order = await order_models.create_order(order_collection, order)
         if order.inserted_id:
             return True
     return False
 
-# Consultar pedido por e-mail
+# Consultar pedidos por e-mail
 async def get_order_by_email(order_collection, user_email):
-    order = await order_models.get_order_by_email(order_collection, user_email)
+    order = order_models.get_order_by_email(order_collection, user_email)
     if order:
         return order
     return "Este usuário não possui pedidos!"
