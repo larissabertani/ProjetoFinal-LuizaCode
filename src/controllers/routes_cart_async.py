@@ -34,17 +34,15 @@ async def route_remove_item_cart(requests: Request, user_id, product_code: int):
     response = await cart_rules.delete_product_cart(requests.app.database.carts_collection, user_id, product_code)
     return await process_cart_response(response)
 
+# Deletar carrinho
+@router.delete("/{user_email}", response_description="delete a cart")
+async def route_delete_cart(user_email: str, requests: Request):
+    response = await cart_rules.delete_cart(requests.app.database.carts_collection, user_email)
+    return await process_cart_response(response)
+
 
 # process result
 async def process_cart_response(response):
     if type(response) == str:
         return CartResponse(description = response)
     return CartResponse(description = 'OK', result = response)
-
-
-# deletar carrinho
-@router.delete("/{user_email}", response_description="delete a cart")
-async def route_delete_cart(user_email: str, requests: Request):
-    response = await cart_rules.delete_cart(requests.app.database.carts_collection, user_email)
-    return await process_cart_response(response)
-

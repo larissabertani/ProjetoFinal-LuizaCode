@@ -40,13 +40,14 @@ async def delete_product_all_cart(carts_collection, product_code: int):
 # Deletar carrinho
 async def delete_cart(carts_collection, user_email):
     try:
-    #    cart = jsonable_encoder(cart)
         return await carts_collection.delete_one({'user.email': user_email})
     except Exception as e:
         return f'delete_cart.error: {e}'
     
+# Deletar carrinho vazio
+async def delete_empty_cart(carts_collection):
+    try:
+        return await carts_collection.delete_many({'cart_items': { '$size': 0 }})
+    except Exception as e:
+        return f'delete_empty_cart.erro {e}'
     
-    
-    
-    
-

@@ -9,7 +9,7 @@ Content-Type: application/json
   "description": "Raças Específicas Lhasa Apso Cães Adultos",
   "price": 124.9,
   "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
-  "code": 12345,
+  "code": 1234,
   "type_animal": "dog",
   "category": "food",
   "qt_stock": 6
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ### get product by name of the product
 #Obs: para colocar espaço no nome do produto, substituir espaço por %20
-GET http://127.0.0.1:8000/products/name/Ração Premier HTTP/1.1
+GET http://127.0.0.1:8000/products/name/Ração%20Premier HTTP/1.1
 Content-Type: application/json
 
 ### get product by code of the product
