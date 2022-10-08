@@ -3,6 +3,7 @@ Regras e ajustes para pedidos (order)
 
 """
 
+import asyncio
 from operator import is_
 from src.schemas.order import OrderSchema
 import src.models.order as order_models
@@ -21,8 +22,9 @@ async def create_order(order_collection, address_collection, cart, user_email):
     return False
 
 # Consultar pedidos por e-mail
-async def get_order_by_email(order_collection, user_email):
-    order = order_models.get_order_by_email(order_collection, user_email)
+def get_order_by_email2(order_collection, user_email):
+    order = order_models.get_order_by_email3(order_collection, user_email)
+    print(order)
     if order:
         return order
     return "Este usuário não possui pedidos!"
