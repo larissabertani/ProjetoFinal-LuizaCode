@@ -9,7 +9,7 @@ Content-Type: application/json
 GET http://127.0.0.1:8000/order/count/testando2@gmail.com
 Content-Type: application/json
 
-# Consultar os produtos e suas quantidades em carrinhos fechados
+### Consultar os produtos e suas quantidades em carrinhos fechados
 GET http://127.0.0.1:8000/order/product_code/1234
 Content-Type: application/json
 
