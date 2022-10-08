@@ -1,6 +1,8 @@
 
 # Criar pedido
 import asyncio
+from fastapi.responses import JSONResponse
+
 
 
 async def create_order(order_collection, order):
@@ -11,16 +13,17 @@ async def create_order(order_collection, order):
 
 
 # Consultar os carrinhos fechados de um cliente
-def get_order_by_email3(order_collection, user_email):
-    orders_list = []
-    try:
-        orders = order_collection.find({'user.email': {"$in": user_email}})
-        for order in orders:
-            orders_list.append(order)
-    except Exception as e:
-        print(f'get_order_by_email.error: {e}')
-    print(orders_list)
-    return orders_list
+async def get_order_by_email3(order_collection, user_email):
+    #orders = order_collection.find({},{'user.email': {"$in": user_email}})
+    return JSONResponse(content=user_email)
+    # orders_list = []
+    # try:
+        # orders = order_collection.find({},{'user.email': {"$in": user_email}})
+    #     docs = await orders.to_list(None)
+    # except Exception as e:
+    #     print(f'get_order_by_email.error: {e}')
+    # print(orders_list)
+    # return orders_list
 
 # Consultar os produtos e suas quantidades em carrinhos fechados
 async def get_product(order_collection, product_code):
