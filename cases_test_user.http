@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
     "name": "Daniel",
-    "email": "testando98@gmail.com",
+    "email": "testando0@gmail.com",
     "password": "302010"
 
 }
@@ -20,7 +20,7 @@ Content-Type: application/json
 # Content-Type: application/json
 
 ### get user by email
-GET http://127.0.0.1:8000/users/email/testando1@gmail.com HTTP/1.1
+GET http://127.0.0.1:8000/users/email/testando0@gmail.com HTTP/1.1
 Content-Type: application/json
 
 ### delete user by email
