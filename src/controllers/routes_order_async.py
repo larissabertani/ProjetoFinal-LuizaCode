@@ -11,9 +11,8 @@ router = APIRouter()
 # Consultar os carrinhos fechados de um cliente
 @router.get("/{user_email}", response_description="get orders", response_model=OrderResponse)
 async def route_get_order(request: Request, user_email):
-    response = order_rules.get_order_by_email2(request.app.database.order_collection, user_email)
-    return response
-    #return await process_order_response(response)
+    response = await order_rules.get_order_by_email(request.app.database.order_collection, user_email)
+    return await process_order_response(response)
 
 # Consultar quantos carrinhos fechados um cliente possui
 @router.get("/count/{user_email}", response_description="get order count", response_model=OrderResponse)

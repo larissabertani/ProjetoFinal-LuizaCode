@@ -5,8 +5,8 @@
 GET http://127.0.0.1:8000/order/testando2@gmail.com
 Content-Type: application/json
 
-# Consultar quantos carrinhos fechados um cliente possui
-GET http://127.0.0.1:8000/order/count/testando@gmail.com
+### Consultar quantos carrinhos fechados um cliente possui
+GET http://127.0.0.1:8000/order/count/testando2@gmail.com
 Content-Type: application/json
 
 # Consultar os produtos e suas quantidades em carrinhos fechados

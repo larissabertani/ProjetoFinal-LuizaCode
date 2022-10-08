@@ -22,9 +22,8 @@ async def create_order(order_collection, address_collection, cart, user_email):
     return False
 
 # Consultar pedidos por e-mail
-def get_order_by_email2(order_collection, user_email):
-    order = order_models.get_order_by_email3(order_collection, user_email)
-    print(order)
+async def get_order_by_email(order_collection, user_email):
+    order = await order_models.get_order_by_email(order_collection, user_email, 10)    
     if order:
         return order
     return "Este usuário não possui pedidos!"
