@@ -10,7 +10,6 @@ class DataBase:
     address_collection = None
     product_collection = None
     order_collection = None
-    order_items_collection = None
     carts_collection = None
 
 
@@ -31,7 +30,6 @@ async def connect_db():
     db.address_collection = db.client.shopping_cart.address
     db.product_collection = db.client.shopping_cart.products
     db.order_collection = db.client.shopping_cart.orders
-    db.order_items_collection = db.client.shopping_cart.order_items
     db.carts_collection = db.client.shopping_cart.carts
 
 

@@ -6,13 +6,14 @@ from bson.objectid import ObjectId
 
 import src.rules.user_rules as user_rules
 from src.schemas.user import UserResponse, UserSchema
+from autentication_jwt import *
 
 
 router = APIRouter()
 
 # pegar usuarios
 @router.get("/", response_model=UserResponse)
-async def route_get_user(requests: Request):
+async def route_get_user(requests: Request, autorizado: bool = Depends(valida_admin)):
     response = await user_rules.get_users(requests.app.database.users_collection, 0, 2)
     return await process_user_response(response)
 
@@ -31,7 +32,7 @@ async def route_get_by_id(id: str, request: Request):
 
 # Retornar um usuário pelo email
 @router.get("/email/{email}", response_description="Get a user by email", response_model=UserResponse)
-async def route_get_by_email(email: str, request: Request):
+async def route_get_by_email(email: str, request: Request, autorizado: bool = Depends(valida_admin)):
     response = await user_rules.get_user_by_email(request.app.database.users_collection, email)
     return await process_user_response(response)
 

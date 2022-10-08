@@ -9,12 +9,19 @@ async def create_cart(carts_collection, cart):
     except Exception as e:
         print(f'create_cart.error: {e}')
         
-# Consultar carrinho de compra        
+# Consultar carrinho de compra do usuário pelo id       
 async def get_cart(carts_collection, user_id):
     try:
         return await carts_collection.find_one({'user._id' : user_id})
     except Exception as e:
         print(f'get_cart.error: {e}')
+        
+# Consultar carrinho de compra pelo email       
+async def get_cart_by_email(carts_collection, user_email):
+    try:
+        return await carts_collection.find_one({'user.email' : user_email})
+    except Exception as e:
+        print(f'get_cart_by_email.error: {e}')
         
 # Atualizar carrinho    
 async def update_cart(carts_collection, cart):

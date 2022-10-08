@@ -3,7 +3,6 @@ from src.controllers.routes_user_async import router as user_route
 from src.controllers.routes_products_async import router as product_route
 from src.controllers.routes_address_async import router as address_route
 from src.controllers.routes_order_async import router as order_route
-from src.controllers.routes_order_item_async import router as order_item_route
 from src.controllers.routes_cart_async import router as cart_route
 from fastapi import FastAPI, Request
 from os import environ
@@ -30,7 +29,6 @@ app.include_router(user_route, tags=["users"], prefix="/users")
 app.include_router(product_route, tags=["products"], prefix="/products")
 app.include_router(address_route, tags=["address"], prefix="/address")
 app.include_router(cart_route, tags=["cart"], prefix="/cart")
-app.include_router(order_item_route, tags=["order_item"], prefix="/order_item")
 app.include_router(order_route, tags=["order"], prefix="/order")
 
 

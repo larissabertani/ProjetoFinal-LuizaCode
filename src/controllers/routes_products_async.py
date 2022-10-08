@@ -1,6 +1,7 @@
 from urllib import response
 from fastapi.encoders import jsonable_encoder
 from fastapi import APIRouter, Request, Body, status
+from autentication_jwt import *
 
 import src.rules.product_rules as product_rules
 from src.schemas.product import ProductResponse, ProductSchema, ProductResponse, ProductUpdate
@@ -11,7 +12,7 @@ router = APIRouter()
 
 # create product
 @router.post("/", response_description="Create a new product", response_model=ProductResponse, status_code=status.HTTP_201_CREATED)
-async def route_post_product(requests: Request, new_product: ProductSchema = Body(...)):
+async def route_post_product(requests: Request, new_product: ProductSchema = Body(...), autorizado: bool = Depends(valida_admin)):
     new_product = jsonable_encoder(new_product)
     response = await product_rules.create_product(requests.app.database.product_collection, new_product)
     return await process_product_response(response)
@@ -31,13 +32,13 @@ async def route_get_product_by_code(code: int, request: Request):
 
 # update product by code
 @router.put("/{code}", response_description="Update a product by code", response_model=ProductResponse)
-async def route_update_product_by_code(code: int, request: Request, product: ProductUpdate = Body(...)):
+async def route_update_product_by_code(code: int, request: Request, product: ProductUpdate = Body(...), autorizado: bool = Depends(valida_admin)):
     response = await product_rules.update_product(request.app.database.product_collection, code, product)
     return await process_product_response(response)
 
 # delete product by code
 @router.delete("/{code}", response_description="Delete a product")
-async def route_delete_product(code: int, request: Request):
+async def route_delete_product(code: int, request: Request, autorizado: bool = Depends(valida_admin)):
     response = await product_rules.delete_product(request.app.database.product_collection, request.app.database.carts_collection, code)
     return await process_product_response(response)
 

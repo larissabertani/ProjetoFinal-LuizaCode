@@ -8,6 +8,8 @@ import src.rules.address_rules as address_rules
 from src.schemas.address import Address, AddressSchema, AddressResponse
 from src.schemas.user import UserSchema
 
+from autentication_jwt import *
+
 
 router = APIRouter()
 
@@ -24,14 +26,14 @@ async def route_address(user_email: str, request: Request, new_address: List[Add
 
 # Retornar endereço pelo email do usuário
 @router.get("/{user_email}", response_description="get address by user email", response_model=List[Address])
-async def route_get_address(user_email: str, request: Request):
+async def route_get_address(user_email: str, request: Request, autorizado: bool = Depends(valida_admin)):
     user_address = await address_rules.get_address_by_user(request.app.database.address_collection, user_email)
     return user_address['addresses']
     # return response
 
 # Deletar endereço do usuário passando email
 @router.delete("/{email}", response_description="delete a address")
-async def route_delete_address(email: str, requests: Request):
+async def route_delete_address(email: str, requests: Request, autorizado: bool = Depends(valida_admin)):
     response = await address_rules.delete_address(requests.app.database.address_collection, email)
     return await process_address_response(response)
 

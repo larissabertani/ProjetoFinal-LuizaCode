@@ -1,22 +1,39 @@
-from src.models.order import create_cart, delete_cart
-from src.schemas.order import OrderSchema
+
+from src.schemas.order import OrderResponse
+import src.rules.order_rules as order_rules
 from bson.objectid import ObjectId
-from fastapi import APIRouter, Request, status
+from fastapi import APIRouter, Request
 
 router = APIRouter()
 
+# Consultar os carrinhos fechados de um cliente
+@router.get("/{user_email}", response_description="get orders", response_model=OrderResponse)
+async def route_get_order(request: Request, user_email):
+    response = await order_rules.get_order_by_email(request.app.database.order_collection, user_email)
+    return await process_order_response(response)
 
-@router.post("/{user_id}",
-             status_code=status.HTTP_201_CREATED,
-             response_model=OrderSchema)
-async def route_create_cart(user_id: str, request: Request):
-    data = await create_cart(request.app.database.order_collection,
-                             request.app.database.users_collection,
-                             request.app.database.address_collection,
-                             ObjectId(str(user_id)))
-    return data
+# Consultar quantos carrinhos fechados um cliente possui
+@router.get("/count/{user_email}", response_description="get order count", response_model=OrderResponse)
+async def route_get_order(request: Request, user_email):
+    response = await order_rules.get_order_by_email(request.app.database.order_collection, user_email)    
+    if type(response) == str:
+        return await process_order_response(response)
+    return await process_order_response(len(response))
 
+# Consultar os produtos e suas quantidades em carrinhos fechados
+@router.get("/product_code/{product_code}", response_description="get product qty", response_model=OrderResponse)
+async def route_get_product(request: Request, product_code):
+    response = await order_rules.get_product(request.app.database.order_collection, product_code)
+    return await process_order_response(response)
 
+# Excluir pedido do cliente
 @router.delete("/{cart_id}")
-async def route_delete_cart(cart_id: str, request: Request):
-    return await delete_cart(request.app.database.order_collection, ObjectId(cart_id))
+async def route_delete_order(cart_id: str, request: Request):
+    response = await order_rules.delete_cart(request.app.database.order_collection, ObjectId(cart_id))
+    return await process_order_response(response)
+
+# process result
+async def process_order_response(response):
+    if type(response) == str:
+        return OrderResponse(description = response)
+    return OrderResponse(description = 'OK', result = response)
