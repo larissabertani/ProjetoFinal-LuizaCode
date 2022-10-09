@@ -1,5 +1,3 @@
-import email
-
 
 async def create_user(users_collection, user):
     try:

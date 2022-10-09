@@ -1,9 +1,5 @@
 
 # Criar pedido
-import asyncio
-from fastapi.responses import JSONResponse
-
-
 
 async def create_order(order_collection, order):
     try:
@@ -13,24 +9,21 @@ async def create_order(order_collection, order):
 
 
 # Consultar quantos carrinhos fechados um cliente possui
-async def get_order_by_email(order_collection, user_email, limit: int):
+async def get_order_by_email(order_collection, user_email, skip: int, limit: int):
     try:
-        orders_cursor = order_collection.find({'user.email' : user_email}).skip(int(0)).limit(int(limit))          
+        orders_cursor = order_collection.find({'user.email' : user_email}).skip(int(skip)).limit(int(limit))          
         return await orders_cursor.to_list(length=int(limit))    
             
     except Exception as e:
         print(f'get_order_by_email.error: {e}')
-
+        
 # Consultar os produtos e suas quantidades em carrinhos fechados
-async def get_product(order_collection, product_code):
+async def get_order_by_id(order_collection, order_id):
     try:
-        return await order_collection.aggregate([    
-            { "$match": { "order_items": { "product.code": product_code } } },
-            { "$group": { "product.code": 1, "count": { "qtd_product": 1 } }}
-        ])    
-    
+        return await order_collection.find_one({'_id' : order_id})          
+            
     except Exception as e:
-        print(f'get_product.error: {e}')
+        print(f'get_order_items_by_id.error: {e}')        
 
 # Deletar order
 async def delete_order(order_collection, order_id):

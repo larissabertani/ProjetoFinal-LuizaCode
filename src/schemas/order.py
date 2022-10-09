@@ -27,4 +27,4 @@ class OrderSchema(BaseModel):
 
 class OrderResponse(BaseModel):
     description: str
-    result: Optional[OrderSchema] | Optional[List[OrderSchema]] | int = None
+    result: Optional[OrderSchema] | Optional[List[OrderSchema]] | Optional[List[CartItemsSchema]] | int = None

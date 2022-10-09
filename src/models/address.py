@@ -31,14 +31,14 @@ async def get_address_by_id(address_collection, user_address_id):
 #     except Exception as e:
 #         print(f'get_address_by_user.error: {e}')
         
-async def get_one_address(address_collection, user_email):
-    find_address = await get_address_by_user(address_collection, user_email)
+async def get_delivery_address(address_collection, user_email):
+    user_addresses = await get_address_by_user(address_collection, user_email)
     
-    if find_address:
-        for add in find_address["addresses"]:
-            if add["is_delivery"]:
-                return add
-    return "FALHA"  
+    if user_addresses:
+        for address in user_addresses["addresses"]:
+            if address["is_delivery"]:
+                return address
+    return "Erro ao obter endereço de entrega"  
 
 async def delete_address(address_collection, user_email):
     try:

@@ -1,7 +1,7 @@
-from csv import excel
+# Criar carrinho de compra
+
 from fastapi.encoders import jsonable_encoder
 
-# Criar carrinho de compra
 async def create_cart(carts_collection, cart):
     try:
         cart = jsonable_encoder(cart)

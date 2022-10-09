@@ -1,11 +1,7 @@
-from typing import List
 
-from bson.objectid import ObjectId
-from fastapi import APIRouter, Request, Body, status
-from fastapi.encoders import jsonable_encoder
+from fastapi import APIRouter, Request
 import src.rules.cart_rules as cart_rules
-
-from src.schemas.cart import CartSchema, CartResponse
+from src.schemas.cart import CartResponse
 from autentication_jwt import *
 
 router = APIRouter()
@@ -17,7 +13,7 @@ router = APIRouter()
 #     return response
 
 # Adicionar item no carrinho
-@router.post("/{user_id}/{product_code}", response_description="create a new cart", response_model=CartResponse)
+@router.post("/{user_id}/{product_code}", response_description="add item to cart", response_model=CartResponse)
 async def route_create_cart(requests: Request, user_id, product_code: int):
     response = await cart_rules.add_item_cart(requests.app.database.carts_collection, requests.app.database.users_collection, requests.app.database.product_collection, user_id, product_code)
     return await process_cart_response(response)
