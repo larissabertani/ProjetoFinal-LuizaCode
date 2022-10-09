@@ -2,14 +2,18 @@
 
 ### get open cart by user id 
 # Consultar os carrinhos fechados de um cliente
-GET http://127.0.0.1:8000/order/testando2@gmail.com
+GET http://127.0.0.1:8000/order/maisa@gmail.com
 Content-Type: application/json
 
 ### Consultar quantos carrinhos fechados um cliente possui
 GET http://127.0.0.1:8000/order/count/testando2@gmail.com
 Content-Type: application/json
 
+<<<<<<< HEAD
 ### Consultar os produtos e suas quantidades em carrinhos fechados 
+=======
+### Consultar os produtos e suas quantidades em carrinhos fechados
+>>>>>>> db126fba8634e94817d39e5f45f0498fdd25144b
 GET http://127.0.0.1:8000/order/product_code/1234
 Content-Type: application/json
 
