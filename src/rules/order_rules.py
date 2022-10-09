@@ -42,3 +42,9 @@ async def delete_order(order_collection, order_id):
         return "Pedido deletado com sucesso!"
     return "Pedido não enontrado"
     
+    # Consultar pedido
+async def get_order(order_collection, order_id):
+    order = await order_models.get_order_by_id(order_collection, order_id)    
+    if order:
+        return order
+    return "Este usuário não possui pedidos!"
