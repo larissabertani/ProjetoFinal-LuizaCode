@@ -22,15 +22,11 @@ async def get_order_by_email(order_collection, user_email, limit: int):
         print(f'get_order_by_email.error: {e}')
 
 # Consultar os produtos e suas quantidades em carrinhos fechados
-async def get_product(order_collection, product_code):
+async def get_order(order_collection, order_id):
     try:
-        return await order_collection.aggregate([    
-            { "$match": { "order_items": { "product.code": product_code } } },
-            { "$group": { "product.code": 1, "count": { "qtd_product": 1 } }}
-        ])    
-    
+        return await order_collection.find_one({'order._id' : order_id})
     except Exception as e:
-        print(f'get_product.error: {e}')
+        print(f'get_order.error: {e}')
 
 # Deletar order
 async def delete_order(order_collection, order_id):

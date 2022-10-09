@@ -23,9 +23,9 @@ async def route_get_order(request: Request, user_email):
     return await process_order_response(len(response))
 
 # Consultar os produtos e suas quantidades em carrinhos fechados
-@router.get("/product_code/{product_code}", response_description="get product qty", response_model=OrderResponse)
-async def route_get_product(request: Request, product_code):
-    response = await order_rules.get_product(request.app.database.order_collection, product_code)
+@router.get("/{order_id}", response_description="get product qty", response_model=OrderResponse)
+async def route_get_product(request: Request, order_id):
+    response = await order_rules.get_product(request.app.database.order_collection, order_id)
     return await process_order_response(response)
 
 # Excluir pedido do cliente

@@ -10,7 +10,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFya
   "description": "Raças Específicas Lhasa Apso Cães Adultos",
   "price": 124.9,
   "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
-  "code": 1234,
+  "code": 8888,
   "type_animal": "dog",
   "category": "food",
   "qt_stock": 6
