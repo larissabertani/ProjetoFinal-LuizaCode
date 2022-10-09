@@ -10,7 +10,7 @@ from src.schemas.cart import CartItemsSchema, CartSchema
 import src.rules.order_rules as order_rules
 import src.models.cart as cart_models
 
-
+# Criar carrinho aberto do usuário
 async def create_cart(carts_collection, users_collection, user_id):
     cart = await cart_models.get_cart(carts_collection, user_id)
     if not cart:
@@ -24,7 +24,7 @@ async def create_cart(carts_collection, users_collection, user_id):
         return "Não há usuário cadastrado com este id." 
     return cart        
             
-# Adicionar produto ao carrinho
+# Adicionar produto ao carrinho do usuário
 async def add_item_cart(carts_collection, users_collection, products_collection, user_id, product_code):
     product = await get_product_by_code(products_collection, product_code)
     if product:

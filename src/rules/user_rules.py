@@ -9,7 +9,7 @@ import src.models.address as address_models
 from src.schemas.user import UserSchema
 import src.models.cart as cart_models
 
-
+# Criar usuário
 async def create_user(users_collection, user):
     db_user = await user_models.get_user_by_email(users_collection, user['email'])
     if db_user:
@@ -20,31 +20,35 @@ async def create_user(users_collection, user):
         return user
     return "Ocorreu um erro ao inserir o usuário!"
     
-    
+# Obter usuário pelo id
 async def get_user(users_collection, user_id):
     user = await user_models.get_user(users_collection, user_id)
     if user:
         return user
     return "Este id não possui cadastro!"
     
+# Obter lista de usuários    
 async def get_users(users_collection, skip, limit):
     users = await user_models.get_users(users_collection, skip, limit)
     if users:
         return users
     return List[UserSchema]
-         
+
+# Obter usuário pelo e-mail
 async def get_user_by_email(users_collection, email):
     user = await user_models.get_user_by_email(users_collection, email)
     if user:
         return user
     return "Este e-mail não possui cadastro!"
-              
+
+# Atualizar usuário              
 async def update_user(users_collection, user_id, user_data):
     user = await user_models.update_user(users_collection, user_id, user_data)
     if user.modified_count:
         return "Usuário alterado com sucesso!"
     return "Erro ao atualizar o usuário!"
-                  
+                
+# Excluir usuário                  
 async def delete_user(users_collection, address_collection, carts_collection, user_email):
     await address_models.delete_address(address_collection, user_email)
     await cart_models.delete_cart(carts_collection, user_email)

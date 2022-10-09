@@ -1,6 +1,4 @@
 
-
-### get cart by user e-mail
 # Consultar os pedidos de um cliente
 GET http://127.0.0.1:8000/order/testando0@gmail.com/skip/0/limit/100
 Content-Type: application/json

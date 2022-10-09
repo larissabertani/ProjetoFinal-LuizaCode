@@ -3,7 +3,6 @@ Regras e ajustes para pedidos (order)
 
 """
 
-import asyncio
 from operator import is_
 from src.schemas.order import OrderSchema
 import src.models.order as order_models
@@ -42,7 +41,7 @@ async def delete_order(order_collection, order_id):
         return "Pedido deletado com sucesso!"
     return "Pedido não enontrado"
     
-    # Consultar pedido
+# Consultar pedido
 async def get_order(order_collection, order_id):
     order = await order_models.get_order_by_id(order_collection, order_id)    
     if order:
