@@ -1,6 +1,6 @@
 
 ## Criar carrinho com id do usuário e produto
-POST http://127.0.0.1:8000/cart/6341df4236697cc0c0adf55a/12345 HTTP/1.1
+POST http://127.0.0.1:8000/cart/634354c00dc7a54d9ff1df64/12345 HTTP/1.1
 Content-Type: application/json
 
 
@@ -10,8 +10,8 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFyaXNzYSIsInBlcm1pc3NvZXMiOiJhZG1pbiJ9.dfRQXpFuHEA0-E7hH34x6SNzEBGIeHJeIN4BRU8Sr-Hlhh2iVWbrOh273l7FLNScQ-hHhiS-3VvnbnbBENvJw7cv3n2K7CRC9TvrMwnQd3Xej8uiJUyhdMV4nrZf0foJ5BFD-UofVAPDASbFa1a43MTmsxEOSEfJ7WbMEDQBKnuqya-WDdFFPmbin3Ez7MV53Vl-u3DO_S-36Xj6biUDf8d0S5vuruDMSslVAPlHn22EFPh4W8F3Clr4lJwJeWLYOJe52S2rBGJsAux-TN0N8DCZ8fhtRPECmj0yZ9A_xKZLHzvcnY_WKizFCmyaRJpk_m4kt_wPvsjg6R2xe_MG6g
 
 
-### Exluir carrinho pelo id do carrinho
-DELETE HTTP://127.0.0.1:8000/cart/633f8d1fd354d8bfcb429811
+### Exluir carrinho pelo email do usuário
+DELETE HTTP://127.0.0.1:8000/cart/maisa@gmail.com
 Content-Type: application/json
 
 
