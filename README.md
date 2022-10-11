@@ -69,7 +69,7 @@ $ uvicorn main:app --reload
 <br/>
 
 <p>
-<a href="#gestao-do-usuario">Gestão do usuário</a> | <a href="#gestao-do-endereco-do-usuario">Gestão do endereço do usuário</a> | <a href="#criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</a> | <a href="#formulando-pedido-fechado">Formulando um pedido fechado</a> 
+<a href="#gestao-do-usuario">Gestão do usuário</a> | <a href="#gestao-do-endereco-do-usuario">Gestão do endereço do usuário</a> | <a href="#gestao-dos-produtos">Gestão dos produtos</a> | <a href="#criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</a> | <a href="#formulando-pedido-fechado">Formulando um pedido fechado</a> 
 </p>
 
 <p>E o desenvolvimeno da aplicação foi realizado dentro das seguintes pastas:
@@ -117,16 +117,15 @@ Para criar um novo usuário usamos o método POST /api/users/, se conseguirmos c
      "password": "<password>",
      "is_active": "<is_active",
      "is_admin": "<is_admin>"
+    }
   }
 }
-}
 ```
-Havendo uma nova tentativa de cadastro com um e-mail já utilizado, a API retornará o código HTTP 201, mas a mensagem informará que não foi possível prosseguir:
+Havendo uma nova tentativa de cadastro com um e-mail já utilizado, a API retornará o código HTTP 202 Accepted e a mensagem informará que este usuário já possui um cadastro:
 
 ```json
 {
-  "description": "Já existe um cliente cadastrado com este e-mail!",
-  "result": null
+  "detail": "Já existe um cliente cadastrado com este e-mail!"
 }
 ```
 Se desejar obter uma lista dos usuários já cadastrados no banco, será possível utilizar a requisição GET /api/users/ e se for preciso buscar um usuário no qual o e-mail é conhecido, basta utilizar o método GET /api/users/<user_email>. O retorno de ambos os endpoints é semelhante, pois devolvem o código HTTP 200 e um json com o resultado, que deverá conter uma lista de usuários ou um dicionário com os dados do usuário buscado, conforme o caso.
@@ -139,28 +138,27 @@ No momento de descadastrar um usuário, a requisição deverá ser realizada uti
   "result": null
 }
 ```
-Em uma situação de exceção, a mensagem retornada será: 
+Em uma situação de exceção, a mensagem retornada informará o código HTTP 404 Not Found e a descrição: 
 
 ```json
 {
-  "description": "Não há usuário com este email para ser deletado!",
-  "result": null
+  "detail": "Não há usuário com este email para ser deletado!"
 }
 ```
 
 <h3 id="gestao-do-endereco-do-usuario">Gestão do endereço do usuário</h3>
 
-Após cadastrar um usuário, é possível incrementar informações a ele, cadastrando também um endereço  que futuramente poderá ser usado para a cobrança da compra ou para o recebimento do pedido.
+Após cadastrar um usuário, é possível acrescentar informações a ele, cadastrando também um endereço que futuramente poderá ser usado para a cobrança da compra ou para o recebimento do pedido.
 
 O arquivo cases_test_address.http, neste caso é o que contempla os esboços das APIs.
 
-No arquivo address.py, que está dentro da pasta "schemas", criamos classes relacionadas ao endereço, contedo as informações necessárias para criá-lo, atualizá-lo e para obtê-lo como resposta para outras etapas da aplicação, como por exemplo, o fechamento do pedido.
+No arquivo address.py, que está dentro da pasta "schemas", criamos classes relacionadas ao endereço, contedo as informações necessárias para criá-lo, atualizá-lo e para obtê-lo como resposta para outras etapas da aplicação, como por exemplo, no fechamento do pedido.
 
-Já na pasta "rules", o arquivo address_rules.py abrigou as regras de negócio definida para o endereço e sua manipulação. A principal regra associada a um endereço é a de que ele precisa ser associado a um usuário existente, através do e-mail dele, para que possa ser criado.
+Já na pasta "rules", o arquivo address_rules.py abrigou as regras de negócio definida para o endereço e sua manipulação. A principal regra associada a um endereço é a de que ele precisa obrigatóriamente ser associado a um usuário existente, através do e-mail do usuário, para que possa ser criado no banco de dados.
 
-Além da criação do endereço, este arquvio também estabelece as rgras para que os endereços de um usuário possam ser consultados e/ou excluídos, utilizando o e-mail do usuário como o campo para a busca dos dados.
+Além da criação do endereço, este arquvio também estabelece as regras para que os endereços de um usuário possam ser consultados e/ou excluídos, utilizando o e-mail do usuário como o dado para realizar a busca dos endereços.
 
-A pasta "models", contém também um arquivo de nome address.py e ele contém as conexões com o banco de dados, para que as funções definidas no arquivo address_rules.py tenham efeito também no banco.
+A pasta "models", contém um arquivo de nome address.py e ele exibe as funções de conexões com o banco de dados, para que as funções definidas no arquivo address_rules.py tenham efeito também no banco.
 
 Por fim, as rotas que permitem que as requisições sejam efetuadas ficam localizadas na pasta "controllers", no arquivo routes_addredd_async.py, assim como as de gestão do usuário.
 
@@ -198,30 +196,257 @@ Para associar um endereço a um novo usuário usamos o método POST /api/address
 }
 ```
 
-Se desejar consultar a lista dos endereços de um usuário já cadastrados no banco, será possível utilizar a requisição GET /api/address/<user_email>. O retorno de ambos os endpoints é semelhante, pois devolvem o código HTTP 200 e um json com o resultado, que deverá conter uma lista de usuários ou um dicionário com os dados do usuário buscado, conforme o caso.
+Se desejar consultar a lista dos endereços de um usuário já cadastrado no banco, será possível utilizar a requisição GET /api/address/<user_email>. O retorno deste endpoint será uma lista contendo os endereços relacionados ao usuário pesquisado.
 
-No momento de descadastrar um usuário, a requisição deverá ser realizada utilizando o método DELETE /api/users/<user_email>. Com o processo de exclusão finalizado, o código retornado é o HTTP 200 e a mensagem:
+```json
+[
+  {
+    "street": "<street>",
+    "number": "<number",
+    "zipcode": "<zipcode",
+    "district": "district",
+    "city": "<city",
+    "state": "<state",
+    "is_delivery": "is_delivery"
+  }
+]
+```
+Entretanto, se o endereço de e-mail utilizado na URL não for encontrado no banco de dados, o retorno será o código HTTP 404 Not Found e a mensagem exibida é:
 
 ```json
 {
-  "description": "Usuário deletado com sucesso!",
-  "result": null
+  "detail": "Não há usuário cadastrado com este email!"
 }
 ```
-Em uma situação de exceção, a mensagem retornada será: 
+Havendo necessidade de exclusão de endereços que não pertencem mais ao usuário, por exemplo, caso ele tenha se mudado, o endpoint utilizado será o DELETE /api/address/<user_email>. Para confirmar a exclusão do endereço, o código HTTP 200 é retornado junto a mensagem:
 
 ```json
 {
-  "description": "Não há usuário com este email para ser deletado!",
+  "description": "Endereço deletado com sucesso!",
   "result": null
 }
 ```
+Em uma situação de exceção, o código será HTTP 404 Not Found e a mensagem retornada será: 
 
+```json
+{
+  "detail": "Não há endereço para ser deletado para este usuário!"
+}
+```
 
+<h3 id="gestao-dos-produtos">Gestão dos produtos</h3>
 
+A área de gestão de produtos foi desenvolvida pensando na equipe administradora do LuPets Team, para disponibilizar os produtos que estarão a venda.
 
+O primeiro passo foi criar na pasta "schemas" um arquivo product.py, contendo a classe do produto. Nela definimos que o nome do produto poderá ter no máximo 100 caracteres. Também incluímos no produto o animal ao qual o produto é dedicado e a categoria do produto para que seja possível disyinguir se ele é de alimentação, higiene ou brinquedo, por exemplo.
 
-          
+Neste arquivo também criamos outras classes para que seja possível realizar a atualização dos dados do produto e também obtê-lo como resposta para outras etapas da aplicação.
+
+Já na pasta "rules", o arquivo product_rules.py abrigou as regras de negócio definida para o produto e sua manipulação. Há algumas regras associadas a criação do produto que são:
+
+- Um produto deverá ter um código único;
+- O preço de um produto deverá ser sempre superior a  R$ 0,01;
+- Para que o produto seja cadastrado, o estoque dele deverá ser superior a 0.
+
+Além da criação do produto, este arquvio também estabelece as regras para que os produtos possam ser consultados pelo código único ou pelo nome; para que eles possam ser atualizados ou retirados do site.
+
+Na pasta "models", criamos o product.py que abriga as funções de conexões com o banco de dados, para que as funções definidas no arquivo produtc_rules.py tenham efeito também no banco.
+
+Por fim, as rotas que permitem que as requisições sejam efetuadas ficam localizadas na pasta "controllers", no arquivo routes_products_async.py, assim como as demais.
+
+##Instruções da Gestão dos produtos
+
+Após garantir que a aplicação está preparada para rodar e com a conexão com o Mongo ativa, podemos iniciar o cadastro de um produto, usando a rota api/products/.
+
+Para cadastrar um produto usamos o método POST /api/products. Ao finalizar o cadastro, o retorno obtido será com o código HTTP 201 Created, e no corpo de resposta haverá todos os dados do produto criado:
+
+```json
+{
+  "description": "OK",
+  "result": {
+    "_id": "<_id>",
+    "name": "<name>",
+    "description": "<description>",
+    "price": "<price>",
+    "image": "<image>",
+    "code": "<code>",
+    "type_animal": "<type_animal>",
+    "category": "<category>",
+    "qt_stock": "<qt_stock>"
+  }
+}
+```
+Se desejar consultar os produtos pelo id, código ou nome, basta utilizar o método GET /api/products/ passando o código do item ou o nome do mesmo após o "products/".
+
+Para buscar produtos pelo nome, caso o mesmo tenha espaços, por exemplo "Ração LuPets para cães Adultos", sugerimos o uso do "%20" para substituir os espaços: Ração%20LuPets%20para%20cães%20Adultos.
+
+O retorno dos endpoints de consulta será com o código HTTP 200 e um json com os dados do item pesquisado:
+
+```json
+{
+  "description": "OK",
+  "result": {
+    "_id": "<_id>",
+    "name": "<name>",
+    "description": "<description>",
+    "price": "<price>",
+    "image": "<image>",
+    "code": "<code>",
+    "type_animal": "<type_animal>",
+    "category": "<category>",
+    "qt_stock": "<qt_stock>"
+  }
+}
+```
+Entretanto, se o produto informado na URL não for encontrado no banco de dados, o retorno será o código HTTP 404 Not Found e a mensagem exibida é:
+
+```json
+{
+  "detail": "Não existe produto com este código!"
+}
+ou
+{
+  "detail": "Não existe produto com este nome!"
+}
+```
+Havendo necessidade de atualizar os dados do produto, como no caso de uma promoção ou alterações na descrição, será possível utilizando o método PUT /api/products/<product_code> junto aos novos dados do item. Ao finalizar a atualização, o código retornado é o HTTP 200 e a mensagem é:
+
+```json
+{
+  "description": "Produto alterado com sucesso!",
+  "result": null
+}
+```
+Caso o código do produto não esteja informado corretamente na requisição, será retornado código HTTP 404 Not Found e a mensagem:
+
+```json
+{
+  "detail": "Não existe produto com o código informado!"
+}
+```
+Se o produto for descontinuado, o endpoint utilizado será o DELETE /api/products/<product_code>. Para confirmar a exclusão do item, o código HTTP 200 é retornado junto a mensagem:
+
+```json
+{
+  "description": "Produto deletado com sucesso!",
+  "result": null
+}
+```
+Em uma situação de exceção, o código será HTTP 404 Not Found e a mensagem retornada será: 
+
+```json
+{
+  "detail": "Não há produto com este código para ser deletado!"
+}
+```
+Nesta etapa, o arquivo cases_test_product.http, foi o que contemplou os esboços das APIs.
+
+<h3 id="criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</h3>
+
+Retornando aos clientes LuPets, iniciamos os passos para a construção de um carrinho de compras que poderá ou não se tornar um pedido em nossa loja.
+
+Para auxiliar com as requisições, temos também um arquivo que contém os esboços das API's: cases_test_cart.
+
+As classes relacionadas ao carrinho ficaram registradas no arquivo cart.py, dentro da pasta "schemas". A classe criada para os produtos do carrinho, herdou a classe criada para produtos e a classe para a construção do carrinho, herdou a classe do usuário.
+
+Há também outras classes para que seja possível obtê-lo como resposta para outras etapas da aplicação, como a finalização do pedido.
+
+Em "rules", o arquivo cart_rules.py abrigou as regras para que um usuário tivesse um carrinho. Para iniciar, somente é possível ter um carrinho um usuário que já esteja cadastrado na loja e ele somente conseguirá ser criado se adcionarmos um produto que também já esteja no banco de dados.
+
+Após a criação de um carrinho é possível adicionar novos produtos, retirar produtos, finalizá-lo para que ele se torne um pdido ou excluí-lo, no caso de haver desistência da compra.
+
+Na pasta "models", criamos o cart.py que abriga as funções de conexões com o banco de dados, para que as funções definidas no arquivo cart_rules.py tenham efeito também no banco.
+
+Por fim, as rotas que permitem que as requisições sejam efetuadas ficam localizadas na pasta "controllers", no arquivo routes_pcart_async.py, assim como as demais.
+
+##Instruções para a criação do carrinho
+
+Após garantir que a aplicação está preparada para rodar e com a conexão com o Mongo ativa, será necessário garantir alguns passos:
+
+- Que ao menos um usuário esteja cadastrado na loja;
+- Que o usuário cadastrado possua ao menos um endereço cadastrado;
+- Que ao menos um produto esteja cadastrado na loja.
+
+Para um carrinho usamos o método POST /api/cart/<user_id>/<product_code>. A inclusão de um produto é o que cria um carrinho de compras, o retorno obtido que garante que o carrinho está criado é com o código HTTP 201 Created, e no corpo de resposta os seguintes dados:
+
+```json
+{
+  "description": "OK",
+  "result": {
+    "user": {
+      "_id": "<_id>",
+      "name": "<name>",
+      "email": "<email>",
+      "password": "<password>",
+      "is_active": "<is_active",
+      "is_admin": "<is_admin>"
+    },
+    "cart_items": [
+      {
+        "product": {
+          "_id": "<_id>",
+          "name": "<name>",
+          "description": "<description>",
+          "price": "<price>",
+          "image": "<image>",
+          "code": "<code>",
+          "type_animal": "<type_animal>",
+          "category": "<category>",
+          "qt_stock": "<qt_stock>",
+        },
+        "qtd_product": "<qtd_product>"
+      }
+    ],
+    "total_price": "<total_price>"
+  }
+}
+```
+Caso uma das condições para a criação do carrinho não seja satisfeita, haverá o erro HTTP 404 Not Found e as mensagens poderão ser:
+
+```json
+{
+  "detail": "Não existe produto com este código!"
+}
+ou 
+{
+  "detail": "Não há usuário cadastrado com este id."
+}
+```
+Se desejar um administrador da loja, desejar consultar o carrinho de um usuário, ele deverá utilizar o método GET /api/cart/<user_id>.
+
+O retorno do endpoint de consulta será com o código HTTP 200 e um json com os dados do carrinho e do usuário, como ocorre na criação do carrinho.
+
+Entretanto, se o usuário informado na URL não for encontrado no banco de dados, o retorno será o código HTTP 404 Not Found e a mensagem exibida é:
+
+```json
+{
+  "detail": "Este id não possui carrinho aberto!"
+}
+```
+Caso haja a desistência da compra de um produto, o usuário conseguirá removê-lo de seu carrinho. Para isso é executada a requisição DELETE /api/cart/<user_id>/<product_code>.Ao finalizar a remoção, o código retornado é o HTTP 200 OK. 
+
+Se alguma das informações solicitadas não estiver correta, será retornado código HTTP 404 Not Found e a mensagem:
+
+```json
+{
+  "detail": "Não existe produto com o código informado!"
+}
+```
+Se o produto for descontinuado, o endpoint utilizado será o DELETE /api/products/<code>. Para confirmar a exclusão do item, o código HTTP 200 é retornado junto a mensagem:
+
+```json
+{
+  "description": "Produto deletado com sucesso!",
+  "result": null
+}
+```
+Em uma situação de exceção, o código será HTTP 404 Not Found e a mensagem retornada será: 
+
+```json
+{
+  "detail": "Não há produto com este código para ser deletado!"
+}
+```
 
 
 
