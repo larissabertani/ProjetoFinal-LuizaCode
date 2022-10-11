@@ -2,7 +2,7 @@
 Regras e ajustes para carrinhos
 
 """
-
+from fastapi import HTTPException
 from fastapi.encoders import jsonable_encoder
 from src.models.user import get_user
 from src.models.product import get_product_by_code
@@ -20,8 +20,8 @@ async def create_cart(carts_collection, users_collection, user_id):
             new_cart = await cart_models.create_cart(carts_collection, cart)
             if new_cart.inserted_id:
                 return await cart_models.get_cart(carts_collection, user_id)        
-            return "Ocorreu um erro ao criar o carrinho!"
-        return "Não há usuário cadastrado com este id." 
+            raise HTTPException(status_code=202, detail ="Ocorreu um erro ao criar o carrinho!")
+        raise HTTPException(status_code=404, detail ="Não há usuário cadastrado com este id.") 
     return cart        
             
 # Adicionar produto ao carrinho do usuário
@@ -46,10 +46,10 @@ async def add_item_cart(carts_collection, users_collection, products_collection,
         cart = await cart_models.update_cart(carts_collection, cart)
         if cart.modified_count:
             return await cart_models.get_cart(carts_collection, user_id)
-        return "Erro ao atualizar o carrinho!"
-    return "Não existe produto com este código!"
-           
+        raise HTTPException(status_code=202, detail ="Erro ao atualizar o carrinho!")
+    raise HTTPException(status_code=404, detail ="Não existe produto com este código!")
     
+
 # Calcular preço total do carrinho    
 async def calculate_cart_price(cart):
     price: float = 0
@@ -63,7 +63,7 @@ async def get_cart(carts_collection, user_id):
     cart = await cart_models.get_cart(carts_collection, user_id)
     if cart:
         return cart
-    return "Este id não possui carrinho aberto!"
+    raise HTTPException(status_code=404, detail ="Este id não possui carrinho aberto!")
 
 # Remover produto do carrinho do usuário
 async def delete_product_cart(carts_collection, user_id, product_code: int):
@@ -74,8 +74,8 @@ async def delete_product_cart(carts_collection, user_id, product_code: int):
             if delete_cart.modified_count:
                 await cart_models.delete_empty_cart(carts_collection)
                 return "Produto removido do carrinho com sucesso!"
-            return "Não existe produto com este código no carrinho"
-        return "Este usuário não possui carrinho aberto."
+            raise HTTPException(status_code=404, detail ="Não existe produto com este código no carrinho")
+        raise HTTPException(status_code=404, detail ="Este usuário não possui carrinho aberto.")
     except Exception as e:
         print(f'delete_product_cart.error: {e}')
         
@@ -95,8 +95,8 @@ async def delete_cart(carts_collection, user_email):
     cart = await cart_models.delete_cart(carts_collection, user_email)
     if cart.deleted_count:        
         return "Carrinho deletado com sucesso!"
-    # raise HTTPException(status_code=404, detail="Não há carrinho para ser deletado para este usuário!")
-    return "Não há carrinho para ser deletado para este usuário!"      
+    raise HTTPException(status_code=404, detail="Não há carrinho para ser deletado para este usuário!")
+    #return "Não há carrinho para ser deletado para este usuário!"      
 
 # Fechar carrinho aberto do usuário
 async def close_cart(carts_collection, order_collection, address_collection, user_email):
@@ -107,9 +107,9 @@ async def close_cart(carts_collection, order_collection, address_collection, use
             cart = await cart_models.delete_cart(carts_collection, user_email)
             if cart.deleted_count:        
                 return "Pedido criado com sucesso!"
-            return "Ocorreu um erro ao excluir o carrinho"
-        return "Ocorreu um erro ao criar o pedido"
-    return "Não há carrinho aberto para este usuário"
+            raise HTTPException(status_code=203, detail ="Ocorreu um erro ao excluir o carrinho")
+        raise HTTPException(status_code=203, detail ="Ocorreu um erro ao criar o pedido")
+    raise HTTPException(status_code=404, detail ="Não há carrinho aberto para este usuário")
 
         
     

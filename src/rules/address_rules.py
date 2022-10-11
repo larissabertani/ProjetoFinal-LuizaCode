@@ -10,7 +10,8 @@ from fastapi import HTTPException
 async def create_user_address(address_collection, users_collection, user_email, new_address):# = []):
     user = await user_models.get_user_by_email(users_collection, user_email)
     if (not user):
-        return "Não há usuário cadastrado com este email!"
+        #return "Não há usuário cadastrado com este email!"
+        raise HTTPException(status_code=404, detail="Não há usuário cadastrado com este email!")
     
     user_address = await address_models.get_address_by_user(address_collection, user_email)     
     

@@ -113,7 +113,7 @@ async def test_get_product_by_code_undefined():
             "/products/code/12431"
         )
         
-        assert response.status_code == 200
+        assert response.status_code == 404
         body = response.json()
         assert body.get("description") == 'Não existe produto com este código!'
         assert body.get("result") is None
@@ -131,7 +131,7 @@ async def test_get_product_by_name_undefined():
             "/products/name/ração pinscher"
         )
         
-        assert response.status_code == 200
+        assert response.status_code == 404
         body = response.json()
         assert body.get("description") == 'Não existe produto com este nome!'
         assert body.get("result") is None

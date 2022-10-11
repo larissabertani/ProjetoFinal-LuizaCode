@@ -6,11 +6,11 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFyaXNzYSIsInBlcm1pc3NvZXMiOiJhZG1pbiJ9.dfRQXpFuHEA0-E7hH34x6SNzEBGIeHJeIN4BRU8Sr-Hlhh2iVWbrOh273l7FLNScQ-hHhiS-3VvnbnbBENvJw7cv3n2K7CRC9TvrMwnQd3Xej8uiJUyhdMV4nrZf0foJ5BFD-UofVAPDASbFa1a43MTmsxEOSEfJ7WbMEDQBKnuqya-WDdFFPmbin3Ez7MV53Vl-u3DO_S-36Xj6biUDf8d0S5vuruDMSslVAPlHn22EFPh4W8F3Clr4lJwJeWLYOJe52S2rBGJsAux-TN0N8DCZ8fhtRPECmj0yZ9A_xKZLHzvcnY_WKizFCmyaRJpk_m4kt_wPvsjg6R2xe_MG6g
 
 { 
-  "name": "Ração Premiere",
+  "name": "Ração 4",
   "description": "Raças Específicas Lhasa Apso Cães Adultos",
-  "price": 124.9,
+  "price": 99.99,
   "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
-  "code": 8888,
+  "code": 5643,
   "type_animal": "dog",
   "category": "food",
   "qt_stock": 6
@@ -18,20 +18,20 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFya
 
 ### Obter produto pelo nome
 #Obs: para colocar espaço no nome do produto, substituir espaço por %20
-GET http://127.0.0.1:8000/products/name/Ração%20Premier HTTP/1.1
+GET http://127.0.0.1:8000/products/name/Ração%204 HTTP/1.1
 Content-Type: application/json
 
-### Obter produto pelo códig
-GET http://127.0.0.1:8000/products/code/1245 HTTP/1.1
+### Obter produto pelo código
+GET http://127.0.0.1:8000/products/code/5643 HTTP/1.1
 Content-Type: application/json
 
 ### Atualizar produto pelo código
-PUT http://127.0.0.1:8000/products/1243 HTTP/1.1
+PUT http://127.0.0.1:8000/products/5643 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFyaXNzYSIsInBlcm1pc3NvZXMiOiJhZG1pbiJ9.dfRQXpFuHEA0-E7hH34x6SNzEBGIeHJeIN4BRU8Sr-Hlhh2iVWbrOh273l7FLNScQ-hHhiS-3VvnbnbBENvJw7cv3n2K7CRC9TvrMwnQd3Xej8uiJUyhdMV4nrZf0foJ5BFD-UofVAPDASbFa1a43MTmsxEOSEfJ7WbMEDQBKnuqya-WDdFFPmbin3Ez7MV53Vl-u3DO_S-36Xj6biUDf8d0S5vuruDMSslVAPlHn22EFPh4W8F3Clr4lJwJeWLYOJe52S2rBGJsAux-TN0N8DCZ8fhtRPECmj0yZ9A_xKZLHzvcnY_WKizFCmyaRJpk_m4kt_wPvsjg6R2xe_MG6g
 
 { 
-  "name": "Ração Premier 2",
+  "name": "Ração 4 - nova embalagem",
   "description": "Raças Específicas Lhasa Apso Cães Adultos",
   "price": 124.9,
   "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
@@ -41,6 +41,6 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFya
 }
 
 ### Excluir produto pelo código
-DELETE HTTP://127.0.0.1:8000/products/1234 HTTP/1.1
+DELETE HTTP://127.0.0.1:8000/products/5643 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFyaXNzYSIsInBlcm1pc3NvZXMiOiJhZG1pbiJ9.dfRQXpFuHEA0-E7hH34x6SNzEBGIeHJeIN4BRU8Sr-Hlhh2iVWbrOh273l7FLNScQ-hHhiS-3VvnbnbBENvJw7cv3n2K7CRC9TvrMwnQd3Xej8uiJUyhdMV4nrZf0foJ5BFD-UofVAPDASbFa1a43MTmsxEOSEfJ7WbMEDQBKnuqya-WDdFFPmbin3Ez7MV53Vl-u3DO_S-36Xj6biUDf8d0S5vuruDMSslVAPlHn22EFPh4W8F3Clr4lJwJeWLYOJe52S2rBGJsAux-TN0N8DCZ8fhtRPECmj0yZ9A_xKZLHzvcnY_WKizFCmyaRJpk_m4kt_wPvsjg6R2xe_MG6g

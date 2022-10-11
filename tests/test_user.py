@@ -68,7 +68,7 @@ async def test_get_user_by_email_undefined():
             "/user/email/teste@gmail.com",
         headers=headers)
         
-        assert response.status_code == 200
+        assert response.status_code == 404
         body = response.json()
         assert body.get("description") == 'Este e-mail não possui cadastro!'
         assert body.get("result") is None

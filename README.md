@@ -23,7 +23,7 @@
 
 <p>Ana Vitória <br/>
 Camila Reis <br/>
-Larissa <br/>
+Larissa Bertani<br/>
 Maisa Pacheco <br/>
 Siomara Murta</p>
 
