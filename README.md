@@ -21,7 +21,7 @@
 
 <h3 id="pessoas-desenvolvedoras">Pessoas Desenvolvedoras do Projeto:</h3>
 
-<p>Ana Vitória <br/>
+<p>Ana Vitória Luz<br/>
 Camila Reis <br/>
 Larissa Bertani<br/>
 Maisa Pacheco <br/>

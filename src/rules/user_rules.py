@@ -40,7 +40,7 @@ async def get_user_by_email(users_collection, email):
     user = await user_models.get_user_by_email(users_collection, email)
     if user:
         return user
-    raise HTTPException(status_code=404, detail ="Este e-mail não possui cadastro!")
+    raise HTTPException(status_code=404, detail ='Este e-mail não possui cadastro!')
 
 # Atualizar usuário              
 async def update_user(users_collection, user_id, user_data):

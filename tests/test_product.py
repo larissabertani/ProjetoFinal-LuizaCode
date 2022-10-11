@@ -115,9 +115,8 @@ async def test_get_product_by_code_undefined():
         
         assert response.status_code == 404
         body = response.json()
-        assert body.get("description") == 'Não existe produto com este código!'
-        assert body.get("result") is None
-
+        assert body.get("detail") == 'Não existe produto com este código!'
+        
 @mark.asyncio
 async def test_get_product_by_name_undefined():
     with TestClient(app) as client:
@@ -133,10 +132,8 @@ async def test_get_product_by_name_undefined():
         
         assert response.status_code == 404
         body = response.json()
-        assert body.get("description") == 'Não existe produto com este nome!'
-        assert body.get("result") is None
-
-        
+        assert body.get("detail") == 'Não existe produto com este nome!'
+               
 
 @mark.asyncio
 async def test_delete_product_by_code():

@@ -70,8 +70,7 @@ async def test_get_user_by_email_undefined():
         
         assert response.status_code == 404
         body = response.json()
-        assert body.get("description") == 'Este e-mail não possui cadastro!'
-        assert body.get("result") is None
+        assert body.get("detail") == 'Este e-mail não possui cadastro!'
         
 @mark.asyncio
 async def test_delete_user_by_email():
