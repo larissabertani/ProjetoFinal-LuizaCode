@@ -147,5 +147,38 @@ async def test_delete_product_by_code():
         response = client.delete(
             "/products/1234"
         )
-        
 
+@mark.asyncio        
+async def test_update_product_by_code():
+     with TestClient(app) as client:
+        fake_product = client.post(
+            "/products/", json={ 
+                "name": "Ração Premier",
+                "description": "Raças Específicas Lhasa Apso Cães Adultos",
+                "price": 124.9,
+                "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
+                "code": 1243,
+                "type_animal": "dog",
+                "category": "food",
+                "qt_stock": 15},
+            headers=headers)
+        update_body_product = { 
+                "name": "Ração 4 - nova embalagem",
+                "description": "Raças Específicas Lhasa Apso Cães Adultos",
+                "price": 127.9,
+                "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
+                "type_animal": "dog",
+                "category": "food",
+                "qt_stock": 15}
+        
+        update_product = client.put(
+            f"/products/{fake_product.json().get('result').get('code')}",
+        headers=headers, json=update_body_product)
+        
+        body_update_product = update_product.json()
+        
+        assert body_update_product.get("description") == 'Produto alterado com sucesso!'
+        assert body_update_product.get("result") is None
+   
+        #"/products/1243"
+        

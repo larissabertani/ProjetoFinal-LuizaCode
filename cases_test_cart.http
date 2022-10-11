@@ -23,5 +23,3 @@ Content-Type: application/json
 ### Fechar carrinho e criar pedido
 POST http://127.0.0.1:8000/cart/testando0@gmail.com HTTP/1.1
 Content-Type: application/json
-
-
