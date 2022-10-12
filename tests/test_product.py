@@ -48,31 +48,6 @@ async def test_create_product():
         assert body.get("result").get("qt_stock") == 15
         assert "_id" in body.get("result")
 
-@mark.asyncio
-async def test_get_product_by_name():
-    with TestClient(app) as client:
-        product = client.post (
-            "/products/", json={"name": "Ração Premier", "description": "Raças Específicas Lhasa Apso Cães Adultos",
-                                "price": 124.9,"image": "https://static.petz.com.br/fotos/1656091760542.jpg","code": 1243,
-                                "type_animal": "dog","category": "food", "qt_stock": 15},
-             headers=headers)
-        
-        body_user = product.json().get("result")
-        response = client.get(
-            "/products/name/Ração Premier"
-        )
-        
-        assert response.status_code == 200
-        body = response.json()
-        assert body.get("description") == "OK"
-        assert body.get("result").get("name") == "Ração Premier"
-        assert body.get("result").get("description") == "Raças Específicas Lhasa Apso Cães Adultos"
-        assert body.get("result").get("image") ==  "https://static.petz.com.br/fotos/1656091760542.jpg"
-        assert body.get("result").get("code") == 1243
-        assert body.get("result").get("type_animal") == "dog"
-        assert body.get("result").get("category") == "food"
-        assert body.get("result").get("qt_stock") == 15
-        assert "_id" in body.get("result")
     
 @mark.asyncio
 async def test_get_product_by_code():
@@ -182,3 +157,32 @@ async def test_update_product_by_code():
    
         #"/products/1243"
         
+@mark.asyncio
+async def test_create_product_missing_price():
+     with TestClient(app) as client:
+        response = client.post(
+            "/products/", json={ 
+                "name": "Ração Premier",
+                "description": "Raças Específicas Lhasa Apso Cães Adultos",
+                "price": 0.01,
+                "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
+                "code": 1243,
+                "type_animal": "dog",
+                "category": "food",
+                "qt_stock": 15},
+            headers=headers)
+        
+        assert response.status_code == 203
+        
+        body = response.json()
+        assert body.get("detail") == "O valor do produto deve ser superior a R$0,01"
+        
+        # assert body.get("result").get("name") == "Ração Premier"
+        # assert body.get("result").get("description") == "Raças Específicas Lhasa Apso Cães Adultos"
+        # assert body.get("result").get("price") == 0.01
+        # assert body.get("result").get("image") ==  "https://static.petz.com.br/fotos/1656091760542.jpg"
+        # assert body.get("result").get("code") == 1243
+        # assert body.get("result").get("type_animal") == "dog"
+        # assert body.get("result").get("category") == "food"
+        # assert body.get("result").get("qt_stock") == 15
+        # assert "_id" in body.get("result")

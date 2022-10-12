@@ -92,5 +92,34 @@ async def test_create_address_with_invalid_email():
         assert body_address.get("detail") == 'Não há usuário cadastrado com este email!'
         assert fake_address.status_code == 404
 
+# @mark.asyncio
+# async def test_get_address():
+#      with TestClient(app) as client:
+#         fake_client = client.post(
+#             "/user/", json={"name": "Bruna", "email": "teste@gmail.com", "password": "265"}
+#         )
+#         body_client = fake_client.json().get("result")
 
+#         new_address = [{
+#             "street": "i know ",
+#             "number": 10,
+#             "zipcode": "9999-030",
+#             "district": "Grass Lands",
+#             "city": "stark tower",
+#             "state": "Parallel Universe", 
+#             "is_delivery": True
+#         }]
+        
+#         body_address = new_address
+#         fake_address = client.post(
+#             f"/address/teste@gmail.com", json=body_address
+#         )
+#         body_address = fake_address.json()
+        
+#         assert body_client.get
+        
+        
+        
+        
+        
 
