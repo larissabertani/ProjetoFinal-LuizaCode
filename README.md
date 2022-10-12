@@ -32,7 +32,7 @@
             <a href="https://www.linkedin.com/in/camilatofoli/" rel="nofollow">
                  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
             </a>
-            <a href="camilartofoli@gmail.com">
+            <a href="mailto:camilartofoli@gmail.com">
                   <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
             </a>
        </p>
@@ -52,7 +52,7 @@
             <a href="https://br.linkedin.com/in/larissabertani" rel="nofollow">
                  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
             </a>
-            <a href="larissabertani1997@hotmail.com">
+            <a href="mailto:larissabertani1997@hotmail.com">
                   <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
             </a>
        </p>
@@ -69,7 +69,7 @@
             <a href="https://www.linkedin.com/in/maisapacheco/" rel="nofollow">
                  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
             </a>
-            <a href="maisasoarespacheco@gmail.com">
+            <a href="mailto:maisasoarespacheco@gmail.com">
                   <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
             </a>
        </p>
@@ -87,7 +87,7 @@
             <a href="https://www.linkedin.com/in/siomara-murta-31466362/" rel="nofollow">
                  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
             </a>
-            <a href="siomara.murta@gmail.com">
+            <a href="mailto:siomara.murta@gmail.com">
                   <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
             </a>
        </p>
