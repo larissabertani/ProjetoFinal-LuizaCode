@@ -14,7 +14,7 @@ router = APIRouter()
 # pegar usuarios
 @router.get("/", response_model=UserResponse)
 async def route_get_user(requests: Request, autorizado: bool = Depends(valida_admin)):
-    response = await user_rules.get_users(requests.app.database.users_collection, 0, 2)
+    response = await user_rules.get_users(requests.app.database.users_collection, 0, 100)
     return await process_user_response(response)
 
 # criar um usuário

@@ -67,35 +67,30 @@ async def get_cart(carts_collection, user_id):
 
 # Remover produto do carrinho do usuário
 async def delete_product_cart(carts_collection, user_id, product_code: int):
-    try:
-        cart = await cart_models.get_cart(carts_collection, user_id)
-        if cart:
-            delete_cart = await cart_models.delete_product_cart(carts_collection, cart, product_code)
-            if delete_cart.modified_count:
-                await cart_models.delete_empty_cart(carts_collection)
-                return "Produto removido do carrinho com sucesso!"
-            raise HTTPException(status_code=404, detail ="Não existe produto com este código no carrinho")
-        raise HTTPException(status_code=404, detail ="Este usuário não possui carrinho aberto.")
-    except Exception as e:
-        print(f'delete_product_cart.error: {e}')
+    cart = await cart_models.get_cart(carts_collection, user_id)
+    if cart:
+        delete_cart = await cart_models.delete_product_cart(carts_collection, cart, product_code)
+        if delete_cart.modified_count:
+            await cart_models.delete_empty_cart(carts_collection)
+            return "Produto removido do carrinho com sucesso!"
+        raise HTTPException(status_code=404, detail ="Não existe produto com este código no carrinho")
+    raise HTTPException(status_code=404, detail ="Este usuário não existe ou não possui carrinho aberto.") 
         
 # Remover produto do carrinho de todos os usuários
 async def delete_product_all_cart(carts_collection, product_code: int):
-    try:
-        delete_cart = await cart_models.delete_product_all_cart(carts_collection, product_code)
-        if delete_cart.modified_count:
-            await cart_models.delete_empty_cart(carts_collection)
-            return "Produto removido dos carrinhos com sucesso!"
-        return "Não existem produtos com este código nos carrinhos"
-    except Exception as e:
-        print(f'delete_product_all_cart.error: {e}') 
+    delete_cart = await cart_models.delete_product_all_cart(carts_collection, product_code)
+    if delete_cart.modified_count:
+        await cart_models.delete_empty_cart(carts_collection)
+        return "Produto removido dos carrinhos com sucesso!"
+    raise HTTPException(status_code=404, detail = "Não existem produtos com este código nos carrinhos")
+    
         
 # Deletar carrinho do usuário        
 async def delete_cart(carts_collection, user_email):
     cart = await cart_models.delete_cart(carts_collection, user_email)
     if cart.deleted_count:        
         return "Carrinho deletado com sucesso!"
-    raise HTTPException(status_code=404, detail="Não há carrinho para ser deletado para este usuário!")
+    raise HTTPException(status_code=404, detail="Este usuário não existe ou não possui carrinho aberto.")
     #return "Não há carrinho para ser deletado para este usuário!"      
 
 # Fechar carrinho aberto do usuário
@@ -108,8 +103,8 @@ async def close_cart(carts_collection, order_collection, address_collection, use
             if cart.deleted_count:        
                 return "Pedido criado com sucesso!"
             raise HTTPException(status_code=203, detail ="Ocorreu um erro ao excluir o carrinho")
-        raise HTTPException(status_code=203, detail ="Ocorreu um erro ao criar o pedido")
-    raise HTTPException(status_code=404, detail ="Não há carrinho aberto para este usuário")
+        raise HTTPException(status_code=203, detail ="Este usuário ainda não possui um endereço cadastrado")
+    raise HTTPException(status_code=404, detail ="Este usuário não existe ou não possui carrinho aberto.")
 
         
     

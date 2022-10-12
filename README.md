@@ -1,11 +1,40 @@
 
-<h1 id="capa">Projeto final - 5ª edição LuizaCode</h1>
+<img src="17BF2C11.png">
+<h1 align="center" id="capa"><b>Projeto final - 5ª edição LuizaCode</b></h1>
 
-##Carrinho de compras - Petshop
+<h1 align="center"> LuPets Team</h1>
+
+<h4 align="center"> Grupo 9 - Petshop </h4>
+
+<div align="center">
+  
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/74475820/194670258-75e61522-a813-4063-a396-48d31784f29a.gif)
+
+<a href="pyton">
+   <img align="center" alt="node" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+</a>
+    <a href="mongodb">
+   <img align="center" alt="express" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg">
+</a>
+  <a href="fastapi">
+   <img align="center" alt="mysql" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-plain-wordmark.svg">
+</a>
+    <a href="docker">
+   <img align="center" alt="sequelize" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg">
+</a>
+   <a href="heroku">
+   <img align="center" alt="sequelize" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain-wordmark.svg">
+</a>
+  
+</div>
+<br/>
+<img src="17BF2C11.png">
+
+<h2>Carrinho de compras</h2> 
 
 <h3 id="índice">Índice</h3>
 
-* [Capa](#capa)
+* [Projeto final - 5ª edição LuizaCode](#capa)
 * [Índice](#índice)
 * [Descrição do Projeto](#descrição-do-projeto)
 * [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
@@ -13,19 +42,19 @@
 * [Apresentação das atividades](#apresentação-das-atividades)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
-* [Conclusão](#conclusão)
-
-<h3 id="descrição-do-projeto">Descrição do projeto</h3>
+* [Conclusão](#conclusao)
 <br/>
+<h3 id="descrição-do-projeto">Descrição do projeto</h3>
+
 <p>Este projeto teve como objetivo o desenvolvimento de um carrinho de compras voltado ao mercado Pet utilizando o <a href="https://fastapi.tiangolo.com/">FastAPI</a> e o <a href="https://www.mongodb.com/">MongoDB</a>, tecnologias trabalhadas durante o bootcamp.</p>
 
 <h3 id="pessoas-desenvolvedoras">Pessoas Desenvolvedoras do Projeto:</h3>
 
-<p>Ana Vitória Luz<br/>
-Camila Reis <br/>
-Larissa Bertani<br/>
-Maisa Pacheco <br/>
-Siomara Murta</p>
+<p>- Ana Vitória Luz<br/>
+- Camila Reis <br/>
+- Larissa Bertani<br/>
+- Maisa Pacheco <br/>
+- Siomara Murta</p>
 
 <h3 id="como-rodar-o-projeto">Como rodar o projeto?:</h3>
 <br/>
@@ -58,10 +87,21 @@ $ pydantic = Data validation for Python
 ```
 $ uvicorn main:app --reload
 ```
- 
-<h2>!!!! Depois verificar se precisamos atualizar com informações do Docker e do Heroku.</h2>
+• Será necessário instalar o Docker, que poderá ser encontrado clicando <a href="https://docs.docker.com/desktop/install/windows-install/">AQUI</a>.
 
-<br/>
+• Com o docker já instalado e rodando em sua máquina, você poderá acessar o projeto com os seguintes comandos:
+
+```
+- Dentro da pasta do projeto, digite no terminal:
+
+$ docker build -t shopping-cart .
+
+Após esse comando:
+
+$ docker run -p 8000:8000 shopping-cart
+
+```
+• Após a executação dos comandos, será possível acessar o projeto na rota: http://127.0.0.1:8000/docs.
 
 <h3 id="apresentação-das-atividades">Apresentação das atividades:</h3>
 
@@ -69,7 +109,7 @@ $ uvicorn main:app --reload
 <br/>
 
 <p>
-<a href="#gestao-do-usuario">Gestão do usuário</a> | <a href="#gestao-do-endereco-do-usuario">Gestão do endereço do usuário</a> | <a href="#gestao-dos-produtos">Gestão dos produtos</a> | <a href="#criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</a> | <a href="#formulando-pedido-fechado">Formulando um pedido fechado</a> 
+<a href="#gestao-do-usuario">Gestão do usuário</a> | <a href="#gestao-do-endereco-do-usuario">Gestão do endereço do usuário</a> | <a href="#gestao-dos-produtos">Gestão dos produtos</a> | <a href="#criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</a> | <a href="#formulando-pedido-fechado">Formulando um pedido fechado</a> | <a href="#testando-o-projeto">Testando o projeto</a> 
 </p>
 
 <p>E o desenvolvimeno da aplicação foi realizado dentro das seguintes pastas:
@@ -78,7 +118,15 @@ $ uvicorn main:app --reload
 <br/>
   - models: Módulo para persistência (repositório) com o banco de dados.<br/>
   - rules: Módulos para as regras (casos de uso) da aplicação.<br/>
-  - controllers: Módulos para de controle e/ou comunicação com o FastAPI.</p>
+  - controllers: Módulos para de controle e/ou comunicação com o FastAPI.<br/>
+- server: Pasta que contem o endereço das collection que serão utilizados para que sejam realizadas as rotas<br/>
+- tests: contém os arquivos de configuração para que os testes possam rodar e também os testes escritos:
+  - test_user: testes unitários da criação dos usuários;
+  - test_address: testes unitários da criação dos endereços;
+  - test_product: testes unitários da criação dos produtos;
+  - test_cart: testes unitários para a formação de um carrinho de compras;
+  - test-order: testes unitários para a finalização de um pedido.
+  </p>
 
 <h3 id="gestao-do-usuario">Gestão do usuário</h3>
 
@@ -412,9 +460,9 @@ ou
   "detail": "Não há usuário cadastrado com este id."
 }
 ```
-Se desejar um administrador da loja, desejar consultar o carrinho de um usuário, ele deverá utilizar o método GET /api/cart/<user_id>.
+Se desejar, um administrador da loja, dpoderá consultar o carrinho de um usuário. Para isso, ele deverá utilizar o método GET /api/cart/<user_id>.
 
-O retorno do endpoint de consulta será com o código HTTP 200 e um json com os dados do carrinho e do usuário, como ocorre na criação do carrinho.
+O retorno do endpoint de consulta será com o código HTTP 200 e um json com os dados do carrinho e do usuário, exatamente igual ao retorno da criação do carrinho.
 
 Entretanto, se o usuário informado na URL não for encontrado no banco de dados, o retorno será o código HTTP 404 Not Found e a mensagem exibida é:
 
@@ -423,20 +471,31 @@ Entretanto, se o usuário informado na URL não for encontrado no banco de dados
   "detail": "Este id não possui carrinho aberto!"
 }
 ```
-Caso haja a desistência da compra de um produto, o usuário conseguirá removê-lo de seu carrinho. Para isso é executada a requisição DELETE /api/cart/<user_id>/<product_code>.Ao finalizar a remoção, o código retornado é o HTTP 200 OK. 
+Caso haja a desistência da compra de um produto, o usuário final conseguirá removê-lo de seu carrinho. Para isso é executada a requisição DELETE /api/cart/<user_id>/<product_code>. Ao finalizar a remoção, o código retornado é o HTTP 200 OK, com a confirmação:
 
-Se alguma das informações solicitadas não estiver correta, será retornado código HTTP 404 Not Found e a mensagem:
+```json
+{
+  "description": "Produto removido do carrinho com sucesso!",
+  "result": null
+}
+```
+
+Se alguma das informações solicitadas não estiver correta será retornado código HTTP 404 Not Found e as mensagens possíveis são:
 
 ```json
 {
   "detail": "Não existe produto com o código informado!"
 }
+ou
+{
+  "detail": "Este usuário não existe ou não possui carrinho aberto."
+}
 ```
-Se o produto for descontinuado, o endpoint utilizado será o DELETE /api/products/<code>. Para confirmar a exclusão do item, o código HTTP 200 é retornado junto a mensagem:
+Havendo a desistência de toda a compra, o endpoint utilizado será o DELETE /api/cart/<user_email>. Para confirmar que já não existe um carrinho dispnível:
 
 ```json
 {
-  "description": "Produto deletado com sucesso!",
+  "description": "Carrinho deletado com sucesso!",
   "result": null
 }
 ```
@@ -444,104 +503,222 @@ Em uma situação de exceção, o código será HTTP 404 Not Found e a mensagem 
 
 ```json
 {
-  "detail": "Não há produto com este código para ser deletado!"
+  "detail": "Este usuário não existe ou não possui carrinho aberto."
+}
+```
+Entretanto, se a compra for finalizada, usaremos alguns passos de todas as etapas anteriores, como por exemplo a criação do usuário, do endereço e do produto. É essencial que o banco já esteja populado com estas informações para que seja possível a criação do pedido.
+
+O método utilizado para fechar um pedido é o POST /api/cart/<user_email> e o código esperado para a confirmação de que o pedido foi gerado é o HTTP 200 OK, acompanhando da descrição:
+
+```json
+{
+  "description": "Pedido criado com sucesso!",
+  "result": null
+}
+```
+Caso algum dos passos anterirores não tenham sido executados, as mensagens de retorno poderão ser:
+
+```json
+HTTP 404 Not Found:
+{
+  "detail": "Este usuário não existe ou não possui carrinho aberto."
+}
+ou HTTP 203
+{
+  "detail": "Este usuário ainda não possui um endereço cadastrado"
 }
 ```
 
+<h3 id="formulando-pedido-fechado">Formulando um pedido fechado</h3>
 
+Quando o carrinho é finalizado, um pedido é gerado. Isso significa que o usuário finalizou a sua compra com a LuPets e quando após a criação de um pedido é possível obter algumas informações relacionadas a ele. 
 
+As classes relacionadas ao pedido estão registradas no arquivo order.py, dentro da pasta "schemas". A classe criada para a formação, também herdou a classe criada para o usuário e a para o endereço.
 
+Há também outras classes para que seja possível obter o produto como resposta para a sua manipulação.
 
+Na pasta "rules", o arquivo order_rules.py contém as regras para que um usuário possa consultar seus pedidos e rever os produtos e suas quantidades.
 
+Em "models", criamos o order.py contém as funções de conexões com o banco de dados, para que as funções definidas anteriormente tenham efeito também no banco.
 
+Por fim, as rotas que permitem que as requisições sejam efetuadas ficam localizadas na pasta "controllers", no arquivo routes_order_async.py, assim como nas demais etapas.
 
+Para auxiliar com as requisições do pedidos, usamos o arquivo cases_test_order.http, que abriga os esboços da API.
 
+##Instruções para formular um pedido
 
+Após garantir que a aplicação está preparada para rodar e com a conexão com o Mongo ativa, será necessário garantir que ao menos um pedido já esteja finalizado, o que significa que algumas etapas precisarão ter sido executadas:
 
+- Criação de ao menos um usuário na loja;
+- Criação de ao menos um endereço ao usuário cadastado;
+- Criação de ao menos um produto;
+- Criação de um carrinho de compras;
+- Finalizar o carrinho de compras do usuário.
 
+Se desejar, um usuário, poderá consultar uma lista dos pedidos que ele já possui com a LuPets. Para isso, ele deverá utilizar o método GET /api/oder/<user_e-mail>/skip/{skip}/limit/{limit}>.
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-Eu pensei de fazer pelas etapas:
-- Fazer uma apresentação geralzona do projeto;
-- Falar sobre o que precisa fazer pro projeto rodar;
-- Separar cada partezinha do projeto e falar o que faz cada parte.
+O retorno do endpoint de consulta será com o código HTTP 200 e uma lista com os dados de todos os já realizados, até o limit estabelecido na URL:
 
-Aí no último item, ia separar pelo cadastro de usuários, cadastro de endereço do usuário;
-Montagem do pedido, carrinho de compras aberto e carrinho fechado;
-Cadastro de produtos no sistema e a manipulação desses produtos 
+```json
+{
+  "description": "OK",
+  "result": [
+    {
+      "_id": "<_id>",
+      "user": {
+        "_id": "<_id>",
+        "name": "<name>",
+        "email": "<email>",
+        "password": "<password>",
+        "is_active": "<is_active",
+        "is_admin": "<is_admin>"
+      },
+      "price": "<price>",
+      "paid": "<false>",
+      "create": "<create>",
+      "address": {
+        "street": "<street>",
+        "number": "<number",
+        "zipcode": "<zipcode",
+        "district": "district",
+        "city": "<city",
+        "state": "<state",
+        "is_delivery": "is_delivery"
+      },
+      "authority": "<authority>",
+      "order_items": [
+        {
+          "product": {
+            "_id": "<_id>",
+            "name": "<name>",
+            "description": "<description>",
+            "price": "<price>",
+            "image": "<image>",
+            "code": "<code>",
+            "type_animal": "<type_animal>",
+            "category": "<category>",
+            "qt_stock": "<qt_stock>",
+          },
+        "qtd_product": "<qtd_product>"
+        }
+      ],
+    }
+}
+```
+Entretanto, se o e-mail do usuário informado na URL não for encontrado no banco de dados, o retorno será o código HTTP 404 Not Found e a mensagem exibida é:
 
-Isso meio que pra separar o que vai ser de acesso ao usuário final e o que é o acesso admin de controle da empresa
+```json
+{
+  "detail": "Este usuário não possui cadastro ou o e-mail informado está incorreto!"
+}
+```
+Além da consulta dos pedidos, é possível visualizar a quantidade de pedidos que já foram realizados. Para isso, basta utilizar a requisição GET /api/order/count/<user_email>. O retorno, caso todos os parâmetros estejam corretos deverá ser HTTP 200
 
-# shopping-cart
-MongoDB database integration for LuizaCode's shopping-cart project
+```json
+{
+  "description": "OK",
+  "result": "<qtd_orders>"
+}
+```
+Porém, se alguma das informações solicitadas não estiver correta será retornado código HTTP 404 Not Found e a mensagem será:
 
-## libs
-* motor = Driver Python async for MongoDB
-* pydantic = Data validation for Python 
+```json
+{
+  "detail": "Este usuário não possui cadastro ou o e-mail informado está incorreto!"
+}
+```
+A última consulta disponível é para rever quais os produtos e as quantidades que foram inseridas no pedido. A requisição é realizada também pelo método GET /api/order/items/<order_id>. O retorno, caso o pedido já tenha sido criado será:
 
-## Install
-* Create venv
-    ```
-    At the terminal in the project's folder 
-    $ python -m venv venv
-    ```
-    Linux
-    ```
-    $ source venv/bin/activate
-   ```
-   Windows
-    ```
-    $ .\venv\Scripts\activate
-   ```
-   After the the inserted command, it should appear the virtual environment name
-* Install requirements
-     ```
-     $ pip install -r requirements.txt
-     ```
-* Connect mongodb
-  
-     ```´
+```json
+HTTP 200 OK
+{
+  "description": "OK",
+  "result": [
+    {
+      "product": {
+        "_id": "<_id>",
+        "name": "<name>",
+        "description": "<description>",
+        "price": "<price>",
+        "image": "<image>",
+        "code": "<code>",
+        "type_animal": "<type_animal>",
+        "category": "<category>",
+        "qt_stock": "<qt_stock>"
+      },
+      "qtd_product": "<qtd_product>"
+    }
+  ]
+}
+```
+Do contrário, se não houver um pedido com o order_id informado na requisição, será devolvido o código HTTP 404 Not Found e a mensagem:
 
-     $ create a .env file with your mongoDB connect string according to .env.example file 
-     ```
-     
-  
-     | name_env | value |
-     |------------|------------|
-     |DATABASE_URI|connection string Atlas|
-          
+```json
+{
+  "detail": "O número de pedido informado não está correto"
+}
+```
 
-* Run
-  ```
-  $ uvicorn main:app 
-   ```
+<h3 id="testando-o-projeto">Testando o projeto</h3>
 
-* How to test
-  ```
-  Open the cases test files and test the routes
-  Tip: you can install the "Rest Client" extension in the Visual Studio Code to run tests in the *.http files directly
-     ```
-  
+Antes de iniciar os testes do projeto, será necessário realizar algumas instações.
+
+Para começar, faremos a instalação do pytest:
+
+```
+$ pip install -U pytest
+```
+Finalizando a instalação do pytest, crie um arquivo pytest.ini dentro da pasta "tests", para que ele funcione como o arquivo .env.example.txt que está na raiz do projeto. Dentro deste arquivo você informará:
+
+```
+[pytest]
+env = 
+    DATABASE_URI=mongodb+srv://<seuusuario>:<suasenha>@projetofinal-luizacode.wj3w8ev.mongodb.net/test
+```
+Após a criação do pytest.ini, cole o comando abaixo em seu terminal:
+
+```
+$ pytest -c .\tests\pytest.ini --cov-config=.coveragerc --cov-report xml:tests\coverage\cov.xml --cov=. tests/
+```
+Quando o comando acima terminar de ser executado, será criado automaticamente um arquivo cov.xml na pasta "coverage" que se encontra dentro da pasta "tests".
+
+Com todas as configurações realizadas, bastará abrir o terminal e colar o comando abaixo:
+
+```
+$ pytest tests
+```
+Após a execução, no terminal, na aba de saída, será exibida a porcentagem de testes que passaram ou falharam.
+
+<h3 id="tecnologias-utilizadas">Tecnologias utilizadas</h3>
+
+<p>
+Para o desenvolvimento da aplicação, utilizamos as seguintes tecnologias:
+
+• VSCode: Editor de código fonte para criação da aplicação;
+• Trello: Para organização das tarefas a serem desenvolvidas;
+• Slack: Comunicação entre o time;
+• Whatsapp: Comunicação entre o time;
+• Zoom: App para vídeo conferência onde foram ministradas as aulas e onde foi realizado parte do projeto;
+• Google Meet: App para vídeo conferência usado para o desenvolvimento do projeto em conjunto;
+• Python 3.10.7: Linguagem utilizada na programação da aplicação;
+• MongoDB: Banco de dados não relacional utilizado para abrigar os dados criados ao rodar a aplicação;
+• Studio 3T: Plataforma utilizada para facilitar a manipulação dos dados no banco;
+• FastAPI: Framework utilizado para realizar as requisições e criar o swagger;
+• Uvicorn: Utilizado para subir o servidor para que as rotas do FastAPI pudessem ser acessadas;
+• Docker: Plataforma para para conteneirizar a aplicação, para que ela se tornasse portátil para o Heroku;
+• Heroku: Utiliado para que fosse possível fazer o deploy da aplicação e, dessa forma, disponibilizá-la para os avaliadores.
+</p>
+
+<h3 id="pessoas-contribuidoras">Pessoas Contribuidoras</h3>
+
+Neste momento, gostaríamos de formalmente agradecer a todos os professores, parças técnicos e madrinhas/padrinhos que estiveram envolvidos no projeto LuizaCode - 5ª edição, pois todos, a sua maneira, contribuíram efetivamente para que esta aplicação fosse executada com êxito.
+
+Também gostaríamos de agradecer a organização do Bootcamp, em especial a Taci e Débora, que estiveram coordenando todas as etapas do curso, sempre encorajando e confortando todas as participantes.
+
+<h3 id="conclusao">Conclusão</h3>
+
+Concluímos, como um time, que demos mais um passo em direção a carreira por todas almejada, a do desenvolvimento, seja ele front-end ou back-end.
+
+Todas as etapas do bootcamp, sobretudo a realização do projeto final, nos proporcionou vivenciar algo similar ao dia-a-dia de um time de desenvolvimento.
+
+Para além da vivência, conseguimos solidificar conhecimentos chave, que serão primordiais para que possamos continuar a nos desenvolver profissionalmente, tais como a criação e estanciamento de classes, criar uma aplicação que já possua API disponível para ser utilizada, realizar conexões e manipular banco de dados, dentre outros.
