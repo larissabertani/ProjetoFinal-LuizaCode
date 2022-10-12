@@ -2,9 +2,98 @@
 <img src="17BF2C11.png">
 <h1 align="center" id="capa"><b>Projeto final - 5ª edição LuizaCode</b></h1>
 
-<h1 align="center"> LuPets Team</h1>
+<h1 align="center"> LuizaPets Team</h1>
 
 <h4 align="center"> Grupo 9 - Petshop </h4>
+<table align="center">
+  <td align="center"><br>
+        <a href="https://www.linkedin.com/in/ana-vitoria-luz-546201219/">
+          <img src="https://i.postimg.cc/x82zRCj2/Integrantes.png" width="90px;" alt="Ana Vitoria" style="max-width:100%;border-radius: 50%;">
+            <br><sub><b>Ana Vitória Luz</b></sub><br>
+         <p align="center">
+         </a><br>
+         <a href="https://github.com/anairotiv">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" height="20" width="20">
+            </a>
+             <a href="https://www.linkedin.com/in/ana-vitoria-luz-546201219/" rel="nofollow">
+                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
+            </a>
+             <a href="mailto:anavitoriasln@gmail.com">
+                  <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
+                  <td align="center"><br>
+        <a href="https://i.postimg.cc/5N8PbYQw/Integrantes2.png">
+            <img src="https://i.postimg.cc/28wTJfMh/Integrantes2.png" width="90px;" alt="Camila" style="max-width:100%;border-radius: 50%;">
+            <br><sub><b>Camila Tófoli</b></sub><br>
+        <p align="center">
+            </a><br>
+            <a href="https://github.com/camilareist">
+                   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" height="20" width="20">
+            </a>
+            <a href="https://www.linkedin.com/in/camilatofoli/" rel="nofollow">
+                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
+            </a>
+            <a href="camilartofoli@gmail.com">
+                  <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
+            </a>
+       </p>
+</td>
+            </a>
+       </p>
+</td>
+<td align="center"><br>
+        <a href="https://i.postimg.cc/bwzRP6hh/Integrantes3.png">
+            <img src="https://i.postimg.cc/g2K9N5qT/Integrantes3.png" width="90px;" alt="Larissa Bertani" style="max-width:100%;border-radius: 50%;">
+            <br><sub><b>Larissa Bertani</b></sub><br>
+        <p align="center">
+            </a><br>
+            <a href="https://github.com/larissabertani">
+                   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" height="20" width="20">
+            </a>
+            <a href="https://br.linkedin.com/in/larissabertani" rel="nofollow">
+                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
+            </a>
+            <a href="larissabertani1997@hotmail.com">
+                  <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
+            </a>
+       </p>
+</td>
+<td align="center"><br>
+        <a href="https://i.postimg.cc/wBwNk0K6/Integrantes4.png">
+            <img src="https://i.postimg.cc/W44yS44d/Integrantes4.png" width="90px;" alt="Maisa Pacheco" style="max-width:100%;border-radius: 50%;">
+            <br><sub><b>Maisa Pacheco</b></sub><br>
+        <p align="center">
+            </a><br>
+            <a href="https://github.com/MaisaPacheco">
+                   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" height="20" width="20">
+            </a>
+            <a href="https://www.linkedin.com/in/maisapacheco/" rel="nofollow">
+                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
+            </a>
+            <a href="maisasoarespacheco@gmail.com">
+                  <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
+            </a>
+       </p>
+</td>
+
+<td align="center"><br>
+        <a href="https://i.postimg.cc/zBpxKn7W/Integrantes5.png">
+            <img src="https://i.postimg.cc/J4GGwNdx/Integrantes5.png" width="90px;" alt="Siomara Murta" style="max-width:100%;border-radius: 50%;">
+            <br><sub><b>Siomara Murta</b></sub><br>
+        <p align="center">
+            </a><br>
+            <a href="https://github.com/siomaramurta">
+                   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" height="20" width="20">
+            </a>
+            <a href="https://www.linkedin.com/in/siomara-murta-31466362/" rel="nofollow">
+                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" height="20" width="20">
+            </a>
+            <a href="siomara.murta@gmail.com">
+                  <img src="https://user-images.githubusercontent.com/60053229/118977653-c8a76a00-b94c-11eb-8832-e815ed684ccf.png" height="20" width="20">
+            </a>
+       </p>
+</td>
+
+</table>
 
 <div align="center">
   
@@ -51,7 +140,7 @@
 <h3 id="pessoas-desenvolvedoras">Pessoas Desenvolvedoras do Projeto:</h3>
 
 <p>- Ana Vitória Luz<br/>
-- Camila Reis <br/>
+- Camila Tófoli <br/>
 - Larissa Bertani<br/>
 - Maisa Pacheco <br/>
 - Siomara Murta</p>
@@ -101,7 +190,7 @@ Após esse comando:
 $ docker run -p 8000:8000 shopping-cart
 
 ```
-• Após a executação dos comandos, será possível acessar o projeto na rota: http://127.0.0.1:8000/docs.
+• Após a executação dos comandos, será possível acessar o projeto na rota: http://127.0.0.1:8000/docs. Este link contém o swagger da aplicação. A aplicação foi hospedada no Heroku, além de ter sido feito um deploy no Docker.
 
 <h3 id="apresentação-das-atividades">Apresentação das atividades:</h3>
 
@@ -119,8 +208,8 @@ $ docker run -p 8000:8000 shopping-cart
   - models: Módulo para persistência (repositório) com o banco de dados.<br/>
   - rules: Módulos para as regras (casos de uso) da aplicação.<br/>
   - controllers: Módulos para de controle e/ou comunicação com o FastAPI.<br/>
-- server: Pasta que contem o endereço das collection que serão utilizados para que sejam realizadas as rotas<br/>
-- tests: contém os arquivos de configuração para que os testes possam rodar e também os testes escritos:
+- server: Pasta que contém o endereço das collection que serão utilizados para que sejam realizadas as rotas<br/>
+- tests: contém os arquivos de configuração para que os testes possam rodar e os testes escritos:
   - test_user: testes unitários da criação dos usuários;
   - test_address: testes unitários da criação dos endereços;
   - test_product: testes unitários da criação dos produtos;
@@ -140,7 +229,7 @@ Já na pasta "rules", o arquivo user_rules.py abrigou as regras de negócio defi
 
 Na função de exclusão do usuário entendemos que ao retirar um cliente do sistema, os dados relacionados a ele, como o endereço, por exemplo, deveriam ser também excluídos.
 
-Para o usuário que deseja se descadastrar, caso haja uma pedido que ainda não esteja finalizado, ele também será excluído, ou seja, um carrinho de compras que esteja aberto também é excluído junto ao seu dono.
+Para o usuário que deseja se descadastrar, caso haja um pedido que ainda não esteja finalizado, ele também será excluído, ou seja, um carrinho de compras que esteja aberto também é excluído junto ao seu dono.
 
 Entretanto, pedidos já finalizados devem permanecer sem alteração  para que seja possível acompanhar o detalhamento das vendas realizadas.
 
@@ -152,7 +241,7 @@ Por fim, as rotas que permitem que as requisições sejam efetuadas ficam locali
 
 Com a aplicação preparada para rodar e com a conexão com o Mongo ativa, iniciamos o cadastro de um novo usuário, usando a rota api/users/.
 
-Para criar um novo usuário usamos o método POST /api/users/, se conseguirmos criar um usuário no banco de dados, o retorno será com o código HTTP 201 Created, e no corpo de resposta haverá todos os dados do usuário criado:
+Para criar um usuário usamos o método POST /api/users/, se conseguirmos criar um usuário no banco de dados, o retorno será com o código HTTP 201 Created, e no corpo de resposta haverá todos os dados do usuário criado:
 
 ```json
 {
@@ -202,9 +291,9 @@ O arquivo cases_test_address.http, neste caso é o que contempla os esboços das
 
 No arquivo address.py, que está dentro da pasta "schemas", criamos classes relacionadas ao endereço, contedo as informações necessárias para criá-lo, atualizá-lo e para obtê-lo como resposta para outras etapas da aplicação, como por exemplo, no fechamento do pedido.
 
-Já na pasta "rules", o arquivo address_rules.py abrigou as regras de negócio definida para o endereço e sua manipulação. A principal regra associada a um endereço é a de que ele precisa obrigatóriamente ser associado a um usuário existente, através do e-mail do usuário, para que possa ser criado no banco de dados.
+Já na pasta "rules", o arquivo address_rules.py abrigou as regras de negócio definida para o endereço e sua manipulação. A principal regra associada a um endereço é a de que ele precisa obrigatoriamente ser associado a um usuário existente, através do e-mail do usuário, para que possa ser criado no banco de dados.
 
-Além da criação do endereço, este arquvio também estabelece as regras para que os endereços de um usuário possam ser consultados e/ou excluídos, utilizando o e-mail do usuário como o dado para realizar a busca dos endereços.
+Além da criação do endereço, este arquivo também estabelece as regras para que os endereços de um usuário possam ser consultados e/ou excluídos, utilizando o e-mail do usuário como o dado para realizar a busca dos endereços.
 
 A pasta "models", contém um arquivo de nome address.py e ele exibe as funções de conexões com o banco de dados, para que as funções definidas no arquivo address_rules.py tenham efeito também no banco.
 
@@ -284,11 +373,11 @@ Em uma situação de exceção, o código será HTTP 404 Not Found e a mensagem 
 
 <h3 id="gestao-dos-produtos">Gestão dos produtos</h3>
 
-A área de gestão de produtos foi desenvolvida pensando na equipe administradora do LuPets Team, para disponibilizar os produtos que estarão a venda.
+A área de gestão de produtos foi desenvolvida pensando na equipe administradora do LuizaPets Team, para disponibilizar os produtos que estarão a venda.
 
 O primeiro passo foi criar na pasta "schemas" um arquivo product.py, contendo a classe do produto. Nela definimos que o nome do produto poderá ter no máximo 100 caracteres. Também incluímos no produto o animal ao qual o produto é dedicado e a categoria do produto para que seja possível disyinguir se ele é de alimentação, higiene ou brinquedo, por exemplo.
 
-Neste arquivo também criamos outras classes para que seja possível realizar a atualização dos dados do produto e também obtê-lo como resposta para outras etapas da aplicação.
+Neste arquivo também criamos outras classes para que seja possível realizar a atualização dos dados do produto e obtê-lo como resposta para outras etapas da aplicação.
 
 Já na pasta "rules", o arquivo product_rules.py abrigou as regras de negócio definida para o produto e sua manipulação. Há algumas regras associadas a criação do produto que são:
 
@@ -296,7 +385,7 @@ Já na pasta "rules", o arquivo product_rules.py abrigou as regras de negócio d
 - O preço de um produto deverá ser sempre superior a  R$ 0,01;
 - Para que o produto seja cadastrado, o estoque dele deverá ser superior a 0.
 
-Além da criação do produto, este arquvio também estabelece as regras para que os produtos possam ser consultados pelo código único ou pelo nome; para que eles possam ser atualizados ou retirados do site.
+Além da criação do produto, este arquivo também estabelece as regras para que os produtos possam ser consultados pelo código único ou pelo nome; para que eles possam ser atualizados ou retirados do site.
 
 Na pasta "models", criamos o product.py que abriga as funções de conexões com o banco de dados, para que as funções definidas no arquivo produtc_rules.py tenham efeito também no banco.
 
@@ -326,7 +415,7 @@ Para cadastrar um produto usamos o método POST /api/products. Ao finalizar o ca
 ```
 Se desejar consultar os produtos pelo id, código ou nome, basta utilizar o método GET /api/products/ passando o código do item ou o nome do mesmo após o "products/".
 
-Para buscar produtos pelo nome, caso o mesmo tenha espaços, por exemplo "Ração LuPets para cães Adultos", sugerimos o uso do "%20" para substituir os espaços: Ração%20LuPets%20para%20cães%20Adultos.
+Para buscar produtos pelo nome, caso ele tenha espaços, por exemplo "Ração LuizaPets para cães Adultos", sugerimos o uso do "%20" para substituir os espaços: Ração%20LuizaPets%20para%20cães%20Adultos.
 
 O retorno dos endpoints de consulta será com o código HTTP 200 e um json com os dados do item pesquisado:
 
@@ -391,7 +480,7 @@ Nesta etapa, o arquivo cases_test_product.http, foi o que contemplou os esboços
 
 <h3 id="criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</h3>
 
-Retornando aos clientes LuPets, iniciamos os passos para a construção de um carrinho de compras que poderá ou não se tornar um pedido em nossa loja.
+Retornando aos clientes LuizaPets, iniciamos os passos para a construção de um carrinho de compras que poderá ou não se tornar um pedido em nossa loja.
 
 Para auxiliar com as requisições, temos também um arquivo que contém os esboços das API's: cases_test_cart.
 
@@ -399,9 +488,9 @@ As classes relacionadas ao carrinho ficaram registradas no arquivo cart.py, dent
 
 Há também outras classes para que seja possível obtê-lo como resposta para outras etapas da aplicação, como a finalização do pedido.
 
-Em "rules", o arquivo cart_rules.py abrigou as regras para que um usuário tivesse um carrinho. Para iniciar, somente é possível ter um carrinho um usuário que já esteja cadastrado na loja e ele somente conseguirá ser criado se adcionarmos um produto que também já esteja no banco de dados.
+Em "rules", o arquivo cart_rules.py abrigou as regras para que um usuário tivesse um carrinho. Para iniciar, somente é possível ter um carrinho um usuário que já esteja cadastrado na loja e ele somente conseguirá ser criado se adicionarmos um produto que também já esteja no banco de dados.
 
-Após a criação de um carrinho é possível adicionar novos produtos, retirar produtos, finalizá-lo para que ele se torne um pdido ou excluí-lo, no caso de haver desistência da compra.
+Após a criação de um carrinho é possível adicionar novos produtos, retirar produtos, finalizá-lo para que ele se torne um pedido ou excluí-lo, no caso de haver desistência da compra.
 
 Na pasta "models", criamos o cart.py que abriga as funções de conexões com o banco de dados, para que as funções definidas no arquivo cart_rules.py tenham efeito também no banco.
 
@@ -460,7 +549,7 @@ ou
   "detail": "Não há usuário cadastrado com este id."
 }
 ```
-Se desejar, um administrador da loja, dpoderá consultar o carrinho de um usuário. Para isso, ele deverá utilizar o método GET /api/cart/<user_id>.
+Se desejar, um administrador da loja, poderá consultar o carrinho de um usuário. Para isso, ele deverá utilizar o método GET /api/cart/<user_id>.
 
 O retorno do endpoint de consulta será com o código HTTP 200 e um json com os dados do carrinho e do usuário, exatamente igual ao retorno da criação do carrinho.
 
@@ -491,7 +580,7 @@ ou
   "detail": "Este usuário não existe ou não possui carrinho aberto."
 }
 ```
-Havendo a desistência de toda a compra, o endpoint utilizado será o DELETE /api/cart/<user_email>. Para confirmar que já não existe um carrinho dispnível:
+Havendo a desistência de toda a compra, o endpoint utilizado será o DELETE /api/cart/<user_email>. Para confirmar que já não existe um carrinho disponível:
 
 ```json
 {
@@ -531,7 +620,7 @@ ou HTTP 203
 
 <h3 id="formulando-pedido-fechado">Formulando um pedido fechado</h3>
 
-Quando o carrinho é finalizado, um pedido é gerado. Isso significa que o usuário finalizou a sua compra com a LuPets e quando após a criação de um pedido é possível obter algumas informações relacionadas a ele. 
+Quando o carrinho é finalizado, um pedido é gerado. Isso significa que o usuário finalizou a sua compra com a LuizaPets e quando após a criação de um pedido é possível obter algumas informações relacionadas a ele. 
 
 As classes relacionadas ao pedido estão registradas no arquivo order.py, dentro da pasta "schemas". A classe criada para a formação, também herdou a classe criada para o usuário e a para o endereço.
 
@@ -550,12 +639,12 @@ Para auxiliar com as requisições do pedidos, usamos o arquivo cases_test_order
 Após garantir que a aplicação está preparada para rodar e com a conexão com o Mongo ativa, será necessário garantir que ao menos um pedido já esteja finalizado, o que significa que algumas etapas precisarão ter sido executadas:
 
 - Criação de ao menos um usuário na loja;
-- Criação de ao menos um endereço ao usuário cadastado;
+- Criação de ao menos um endereço ao usuário cadastrado;
 - Criação de ao menos um produto;
 - Criação de um carrinho de compras;
 - Finalizar o carrinho de compras do usuário.
 
-Se desejar, um usuário, poderá consultar uma lista dos pedidos que ele já possui com a LuPets. Para isso, ele deverá utilizar o método GET /api/oder/<user_e-mail>/skip/{skip}/limit/{limit}>.
+Se desejar, um usuário, poderá consultar uma lista dos pedidos que ele já possui com a LuizaPets. Para isso, ele deverá utilizar o método GET /api/oder/<user_e-mail>/skip/{skip}/limit/{limit}>.
 
 O retorno do endpoint de consulta será com o código HTTP 200 e uma lista com os dados de todos os já realizados, até o limit estabelecido na URL:
 
@@ -661,7 +750,7 @@ Do contrário, se não houver um pedido com o order_id informado na requisição
 
 <h3 id="testando-o-projeto">Testando o projeto</h3>
 
-Antes de iniciar os testes do projeto, será necessário realizar algumas instações.
+Antes de iniciar os testes do projeto, será necessário realizar algumas instalações.
 
 Para começar, faremos a instalação do pytest:
 
@@ -694,19 +783,19 @@ Após a execução, no terminal, na aba de saída, será exibida a porcentagem d
 <p>
 Para o desenvolvimento da aplicação, utilizamos as seguintes tecnologias:
 
-• VSCode: Editor de código fonte para criação da aplicação;
-• Trello: Para organização das tarefas a serem desenvolvidas;
-• Slack: Comunicação entre o time;
-• Whatsapp: Comunicação entre o time;
-• Zoom: App para vídeo conferência onde foram ministradas as aulas e onde foi realizado parte do projeto;
-• Google Meet: App para vídeo conferência usado para o desenvolvimento do projeto em conjunto;
-• Python 3.10.7: Linguagem utilizada na programação da aplicação;
-• MongoDB: Banco de dados não relacional utilizado para abrigar os dados criados ao rodar a aplicação;
-• Studio 3T: Plataforma utilizada para facilitar a manipulação dos dados no banco;
-• FastAPI: Framework utilizado para realizar as requisições e criar o swagger;
-• Uvicorn: Utilizado para subir o servidor para que as rotas do FastAPI pudessem ser acessadas;
-• Docker: Plataforma para para conteneirizar a aplicação, para que ela se tornasse portátil para o Heroku;
-• Heroku: Utiliado para que fosse possível fazer o deploy da aplicação e, dessa forma, disponibilizá-la para os avaliadores.
+• VSCode: Editor de código fonte para criação da aplicação;</br>
+• Trello: Para organização das tarefas a serem desenvolvidas;</br>
+• Slack: Comunicação entre o time;</br>
+• Whatsapp: Comunicação entre o time;</br>
+• Zoom: App para vídeo conferência onde foram ministradas as aulas e onde foi realizado parte do projeto;</br>
+• Google Meet: App para vídeo conferência usado para o desenvolvimento do projeto em conjunto;</br>
+• Python 3.10.7: Linguagem utilizada na programação da aplicação;</br>
+• MongoDB: Banco de dados não relacional utilizado para abrigar os dados criados ao rodar a aplicação;</br>
+• Studio 3T: Plataforma utilizada para facilitar a manipulação dos dados no banco;</br>
+• FastAPI: Framework utilizado para realizar as requisições e criar o swagger;</br>
+• Uvicorn: Utilizado para subir o servidor para que as rotas do FastAPI pudessem ser acessadas;</br>
+• Docker: Plataforma para para conteinerizar a aplicação, para que ela se tornasse portátil para o Heroku;</br>
+• Heroku: Utilizado para que fosse possível fazer o deploy da aplicação e, dessa forma, disponibilizá-la para os avaliadores.
 </p>
 
 <h3 id="pessoas-contribuidoras">Pessoas Contribuidoras</h3>
@@ -719,6 +808,6 @@ Também gostaríamos de agradecer a organização do Bootcamp, em especial a Tac
 
 Concluímos, como um time, que demos mais um passo em direção a carreira por todas almejada, a do desenvolvimento, seja ele front-end ou back-end.
 
-Todas as etapas do bootcamp, sobretudo a realização do projeto final, nos proporcionou vivenciar algo similar ao dia-a-dia de um time de desenvolvimento.
+Todas as etapas do bootcamp, sobretudo a realização do projeto final, nos proporcionou vivenciar algo similar ao dia a dia de um time de desenvolvimento.
 
 Para além da vivência, conseguimos solidificar conhecimentos chave, que serão primordiais para que possamos continuar a nos desenvolver profissionalmente, tais como a criação e estanciamento de classes, criar uma aplicação que já possua API disponível para ser utilizada, realizar conexões e manipular banco de dados, dentre outros.
