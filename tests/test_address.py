@@ -57,10 +57,10 @@ async def test_get_address():
         fake_client = client.post(
             "/user/", json={"name": "Bruna", "email": "teste@gmail.com", "password": "265"}
         )
-        body_user = fake_client.json()
+        body_user = fake_client.json().get("result")
 
         address = [{
-            "street": "i know ",
+            "street": "i know",
             "number": 10,
             "zipcode": "9999-030",
             "district": "Grass Lands",
@@ -68,19 +68,22 @@ async def test_get_address():
             "state": "Parallel Universe", 
             "is_delivery": True
         }]
+        create_user_address = client.post("/address/teste@gmail.com", json=address)
 
+        body_address_1 = create_user_address.json()
+        
         get_user_address = client.get(f"/address/{body_user.get('email')}", json=address, headers = headers)
 
-        body_address = get_user_address.json()
+        body_address_2 = get_user_address.json()
 
-        assert body_address == [{
-            "street": "i know ",
-            "number": 10,
-            "zipcode": "9999-030",
-            "district": "Grass Lands",
-            "city": "stark tower",
-            "state": "Parallel Universe", 
-            "is_delivery": True
-        }]
-    
+        assert body_address_2[0].get("street") == "i know"
+        assert body_address_2[0].get("number") == 10
+        assert body_address_2[0].get("zipcode") == "9999-030"
+        assert body_address_2[0].get("district") == "Grass Lands"
+        assert body_address_2[0].get("city") == "stark tower"
+        assert body_address_2[0].get("state") == "Parallel Universe"
+        assert body_address_2[0].get("is_delivery") == True
+
         assert get_user_address.status_code == 200
+        
+        
