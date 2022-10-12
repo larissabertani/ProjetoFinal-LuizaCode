@@ -128,7 +128,7 @@ async def test_create_order_invalid_email():
         body_order = fake_order.json()
         
         assert fake_order.status_code == 404
-        assert body_order.get("detail") == 'Não há carrinho aberto para este usuário'
+        assert body_order.get("detail") == 'Este usuário não existe ou não possui carrinho aberto.'
         
 #consultando pedido do cliente       
 @mark.asyncio
