@@ -17,30 +17,13 @@ app = FastAPI()
 async def startup_db_client():
     await connect_db()
     app.database = db
-    # app.mongodb_client = MongoClient(environ.get("DATABASE_URI"))
-    # app.database = app.mongodb_client[str(environ.get("DB_NAME"))]
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
     await disconnect_db()
-    # app.mongodb_client.close()
 
 app.include_router(user_route, tags=["users"], prefix="/users")
 app.include_router(product_route, tags=["products"], prefix="/products")
 app.include_router(address_route, tags=["address"], prefix="/address")
 app.include_router(cart_route, tags=["cart"], prefix="/cart")
 app.include_router(order_route, tags=["order"], prefix="/order")
-
-
-# @app.get("/")
-# def teste_get(request: Request):
-#     return "OK"
-
-# import asyncio
-
-# from src.controllers.users import users_crud
-# # from src.controllers.products import products_crud
-# # rom src.controllers.carrinho import carrinho_crud
-
-# loop = asyncio.get_event_loop()
-# loop.run_until_complete(users_crud())

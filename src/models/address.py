@@ -9,6 +9,7 @@ async def create_user_address(address_collection, user_address):
         logs.error("Erro ao criar endereço do usuário")
         return f'create_address.error: {e}'
 
+
 # Atualizar endereço do usuário
 async def update_address(address_collection, id_user_address, addresses):
     try:
@@ -17,6 +18,7 @@ async def update_address(address_collection, id_user_address, addresses):
     except Exception as e:
         logs.error("Erro ao atualizar endereço do usuário")
         return f'update_addresses.error: {e}'
+    
     
 # Consultar endereço do usuário pelo e-mail       
 async def get_address_by_user(address_collection, user_email):
@@ -27,6 +29,7 @@ async def get_address_by_user(address_collection, user_email):
         logs.error("Erro ao consultar o usuário")
         return f'get_address_by_user.error: {e}'
 
+
 # Consultar endereço do usuário pelo id        
 async def get_address_by_id(address_collection, user_address_id):
     try:
@@ -36,13 +39,6 @@ async def get_address_by_id(address_collection, user_address_id):
         logs.error("Erro ao consultar o usuário")
         return f'get_address_by_id.error: {e}'
         
-# async def get_address_delivery_by_email(address_collection, user_email):
-#     try:
-#         return await address_collection.find_one({"$and": [{'user.email': user_email, 'addresses.is_delivery' : True}]})
-#         #({}, {"$pull": {"cart_items": { "product.code": product_code}}})
-#         #find_one({'user.email' : user_email})
-#     except Exception as e:
-#         print(f'get_address_by_user.error: {e}')
 
 # Consultar endereço de entrega do usuário
 async def get_delivery_address(address_collection, user_email):
@@ -53,6 +49,7 @@ async def get_delivery_address(address_collection, user_email):
             if address["is_delivery"]:
                 return address
     return "Erro ao obter endereço de entrega"  
+
 
 # Excluir endereço do usuário
 async def delete_address(address_collection, user_email):

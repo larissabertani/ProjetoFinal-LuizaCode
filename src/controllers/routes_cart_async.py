@@ -1,16 +1,12 @@
 
 from fastapi import APIRouter, Request
+from autentication_jwt import *
+
 import src.rules.cart_rules as cart_rules
 from src.schemas.cart import CartResponse
-from autentication_jwt import *
 
 router = APIRouter()
 
-# Criar novo carrinho
-# @router.post("/", response_description="create a new cart", response_model=CartResponse)
-# async def route_create_cart(cart: CartSchema, requests: Request):
-#     response = await create_cart(requests.app.database.carts_collection, cart)
-#     return response
 
 # Adicionar item no carrinho
 @router.post("/{user_id}/{product_code}", response_description="add item to cart", response_model=CartResponse)
@@ -25,11 +21,13 @@ async def route_get_cart(requests: Request, user_id, autorizado: bool = Depends(
     response = await cart_rules.get_cart(requests.app.database.carts_collection, user_id)
     return await process_cart_response(response)
 
+
 # Remover produto do carrinho de compra
 @router.delete("/{user_id}/{product_code}", response_description="remove a product cart", response_model=CartResponse)
 async def route_remove_item_cart(requests: Request, user_id, product_code: int):
     response = await cart_rules.delete_product_cart(requests.app.database.carts_collection, user_id, product_code)
     return await process_cart_response(response)
+
 
 # Deletar carrinho
 @router.delete("/{user_email}", response_description="delete a cart")
@@ -37,11 +35,13 @@ async def route_delete_cart(user_email: str, requests: Request):
     response = await cart_rules.delete_cart(requests.app.database.carts_collection, user_email)
     return await process_cart_response(response)
 
+
 # Fechar o carrinho aberto do usuário
 @router.post("/{user_email}", response_description="close open cart and create order", response_model=CartResponse)
 async def route_close_cart(user_email: str, requests: Request):
     response = await cart_rules.close_cart(requests.app.database.carts_collection, requests.app.database.order_collection, requests.app.database.address_collection, user_email)
     return await process_cart_response(response)
+
 
 # process result
 async def process_cart_response(response):

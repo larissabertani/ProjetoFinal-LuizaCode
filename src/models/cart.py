@@ -1,8 +1,7 @@
 import logs
-
-# Criar carrinho de compra
 from fastapi.encoders import jsonable_encoder
 
+# Criar carrinho de compra
 async def create_cart(carts_collection, cart):
     try:
         logs.info("Carrinho criado")
@@ -11,6 +10,7 @@ async def create_cart(carts_collection, cart):
     except Exception as e:
         logs.error("Erro ao criar carrinho")
         return f'create_cart.error: {e}'
+        
         
 # Consultar carrinho de compra do usuário pelo id       
 async def get_cart(carts_collection, user_id):
@@ -21,7 +21,8 @@ async def get_cart(carts_collection, user_id):
         logs.error("Erro ao consultar carrinho")
         return f'get_cart.error: {e}'
         
-# Consultar carrinho de compra pelo email       
+        
+# Consultar carrinho de compra pelo e-mail       
 async def get_cart_by_email(carts_collection, user_email):
     try:
         logs.info("Consulta de carrinho realizada")
@@ -29,6 +30,7 @@ async def get_cart_by_email(carts_collection, user_email):
     except Exception as e:
         logs.error("Erro ao consultar carrinho")
         return f'get_cart_by_email.error: {e}'
+        
         
 # Atualizar carrinho    
 async def update_cart(carts_collection, cart):

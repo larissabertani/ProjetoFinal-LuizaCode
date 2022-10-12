@@ -18,7 +18,6 @@ db = DataBase()
 
 
 async def connect_db():
-    # conexao mongo, com no máximo 10 conexões async
     db.client = AsyncIOMotorClient(
         db.database_uri,
         maxPoolSize=10,

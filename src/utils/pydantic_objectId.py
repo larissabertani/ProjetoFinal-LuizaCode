@@ -1,6 +1,5 @@
 from bson import ObjectId
 
-
 class PyObjectId(ObjectId):
     @classmethod
     def __get_validators__(cls):
@@ -10,7 +9,6 @@ class PyObjectId(ObjectId):
     def validate(cls, v):
         if not ObjectId.is_valid(v):
            return str(v)
-            # raise ValueError("Invalid objectid")
         return ObjectId(v)
 
     @classmethod

@@ -7,10 +7,9 @@ import src.models.user as user_models
 from fastapi import HTTPException
 
 # Criar endereço do usuário
-async def create_user_address(address_collection, users_collection, user_email, new_address):# = []):
+async def create_user_address(address_collection, users_collection, user_email, new_address):
     user = await user_models.get_user_by_email(users_collection, user_email)
     if (not user):
-        #return "Não há usuário cadastrado com este email!"
         raise HTTPException(status_code=404, detail="Não há usuário cadastrado com este email!")
     
     user_address = await address_models.get_address_by_user(address_collection, user_email)     
@@ -32,13 +31,14 @@ async def create_user_address(address_collection, users_collection, user_email, 
         new_user_address = await address_models.get_address_by_id(address_collection, user_address["_id"])
     return new_user_address
 
+
 # Obter endereço do usuário
 async def get_address_by_user(address_collection, user_email):
     user_address = await address_models.get_address_by_user(address_collection, user_email)
     if user_address:
         return user_address
     raise HTTPException(status_code=404, detail="Não há usuário cadastrado com este email!")
-    # return "Não há usuário cadastrado com este email!"
+
 
 # Excluir endereço do usuário
 async def delete_address(address_collection, user_email):
@@ -46,5 +46,3 @@ async def delete_address(address_collection, user_email):
     if address.deleted_count:
         return "Endereço deletado com sucesso!"
     raise HTTPException(status_code=404, detail="Não há endereço para ser deletado para este usuário!")
-    #return "Não há endereço para ser deletado para este usuário!"
-    

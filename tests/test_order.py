@@ -186,13 +186,3 @@ async def test_get_orders():
         assert body_get_user_order.get("result")[0].get("user") == body_client
         assert body_get_user_order.get("result")[0].get("address") == body_address.get("result").get("addresses")[0]
         assert get_user_orders.status_code == 200
-        
-        
-        
-        # assert fake_cart.status_code == 200
-        # assert body_cart.get("user") == body_client
-        # assert body_cart.get("cart_items")[0].get("product") == body_product
-        # price: float = 0
-        # for item in body_cart.get("cart_items"):
-        #     price += item['product']['price'] * item['qtd_product']
-        # assert body_cart.get("total_price") == price

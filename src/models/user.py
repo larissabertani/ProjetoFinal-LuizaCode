@@ -9,6 +9,7 @@ async def create_user(users_collection, user):
         logs.error("Erro ao criar usuário")
         return f'create_user.error: {e}'
  
+ 
 # Obter usuário pelo id
 async def get_user(users_collection, user_id):
     try:
@@ -17,6 +18,7 @@ async def get_user(users_collection, user_id):
     except Exception as e:
         logs.error("Erro ao fazer consulta")
         return f'get_user.error: {e}'
+ 
  
 # Obter lista de usuários
 async def get_users(users_collection, skip, limit):
@@ -29,6 +31,7 @@ async def get_users(users_collection, skip, limit):
         logs.error("Erro ao fazer consulta")
         return f'get_users.error: {e}'
 
+
 # Obter usuário pelo e-mail
 async def get_user_by_email(users_collection, email):
     try:
@@ -38,6 +41,7 @@ async def get_user_by_email(users_collection, email):
     except Exception as e:
         logs.error("Erro ao fazer consulta")
         return f'get_user_by_email.error: {e}'
+
 
 # Atualizar usuário
 async def update_user(users_collection, user_id, user_data):
@@ -57,6 +61,7 @@ async def update_user(users_collection, user_id, user_data):
     except Exception as e:
         logs.error("Erro ao atualizar usuário")
         return f'update_user.error: {e}'
+
 
 # Excluir usuário
 async def delete_user(users_collection, user_email):

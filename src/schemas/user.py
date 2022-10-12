@@ -3,8 +3,8 @@ from bson import List
 from pydantic import BaseModel, Field, SecretStr
 from pydantic.networks import EmailStr
 from bson.objectid import ObjectId
-from src.utils.pydantic_objectId import PyObjectId
 
+from src.utils.pydantic_objectId import PyObjectId
 
 class UserSchema(BaseModel):
     id: PyObjectId | str = Field(default_factory=PyObjectId, alias="_id")
@@ -19,10 +19,17 @@ class UserSchema(BaseModel):
 
     class Config:
         allow_population_by_field_name = True
-        arbitrary_types_allowed = True  # required for the _id
+        arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
         smart_union = True
-
+        schema_extra = {
+            "example": {
+                "name": "Testando Silva",
+                "email": "testando@gmail.com",
+                "password": "*****"
+            }
+        }
+        
 class UserUpdate(BaseModel):
     name: Optional[str]
     email: Optional[EmailStr]

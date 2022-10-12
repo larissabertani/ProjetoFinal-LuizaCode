@@ -117,8 +117,3 @@ async def test_get_all_user():
         assert body.get("result")[1].get("name") == body_user2.get("name")
         assert body.get("result")[1].get("email") == body_user2.get("email")
         assert body.get("result")[1].get("password") == body_user2.get("password")
-        
-        
-
-        
-    

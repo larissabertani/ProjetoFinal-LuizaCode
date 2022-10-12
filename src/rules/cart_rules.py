@@ -4,11 +4,13 @@ Regras e ajustes para carrinhos
 """
 from fastapi import HTTPException
 from fastapi.encoders import jsonable_encoder
+
 from src.models.user import get_user
 from src.models.product import get_product_by_code
 from src.schemas.cart import CartItemsSchema, CartSchema
 import src.rules.order_rules as order_rules
 import src.models.cart as cart_models
+
 
 # Criar carrinho aberto do usuário
 async def create_cart(carts_collection, users_collection, user_id):
@@ -23,6 +25,7 @@ async def create_cart(carts_collection, users_collection, user_id):
             raise HTTPException(status_code=202, detail ="Ocorreu um erro ao criar o carrinho!")
         raise HTTPException(status_code=404, detail ="Não há usuário cadastrado com este id.") 
     return cart        
+            
             
 # Adicionar produto ao carrinho do usuário
 async def add_item_cart(carts_collection, users_collection, products_collection, user_id, product_code):
@@ -55,7 +58,7 @@ async def calculate_cart_price(cart):
     price: float = 0
     for item in cart['cart_items']:
         price += item['product']['price'] * item['qtd_product']
-    cart['total_price'] = price #sum(item['product']['price'] for item in cart['cart_items'])
+    cart['total_price'] = price
     
     
 # Consultar carrinho pelo id do usuário
@@ -64,6 +67,7 @@ async def get_cart(carts_collection, user_id):
     if cart:
         return cart
     raise HTTPException(status_code=404, detail ="Este id não possui carrinho aberto!")
+
 
 # Remover produto do carrinho do usuário
 async def delete_product_cart(carts_collection, user_id, product_code: int):
@@ -75,6 +79,7 @@ async def delete_product_cart(carts_collection, user_id, product_code: int):
             return "Produto removido do carrinho com sucesso!"
         raise HTTPException(status_code=404, detail ="Não existe produto com este código no carrinho")
     raise HTTPException(status_code=404, detail ="Este usuário não existe ou não possui carrinho aberto.") 
+        
         
 # Remover produto do carrinho de todos os usuários
 async def delete_product_all_cart(carts_collection, product_code: int):
@@ -91,7 +96,7 @@ async def delete_cart(carts_collection, user_email):
     if cart.deleted_count:        
         return "Carrinho deletado com sucesso!"
     raise HTTPException(status_code=404, detail="Este usuário não existe ou não possui carrinho aberto.")
-    #return "Não há carrinho para ser deletado para este usuário!"      
+     
 
 # Fechar carrinho aberto do usuário
 async def close_cart(carts_collection, order_collection, address_collection, user_email):

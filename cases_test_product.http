@@ -21,9 +21,11 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiTGFya
 GET http://127.0.0.1:8000/products/name/Ração%204 HTTP/1.1
 Content-Type: application/json
 
+
 ### Obter produto pelo código
 GET http://127.0.0.1:8000/products/code/5643 HTTP/1.1
 Content-Type: application/json
+
 
 ### Atualizar produto pelo código
 PUT http://127.0.0.1:8000/products/5643 HTTP/1.1

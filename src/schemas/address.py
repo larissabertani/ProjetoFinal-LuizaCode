@@ -4,8 +4,6 @@ from bson import ObjectId
 from bson.objectid import ObjectId
 
 from src.schemas.user import UserSchema
-from src.utils.pydantic_objectId import PyObjectId
-
 
 class Address(BaseModel):
     street: str
@@ -15,14 +13,11 @@ class Address(BaseModel):
     city: str
     state: str
     is_delivery: bool = Field(default=True)
-    
-
-
+        
 class AddressSchema(BaseModel):
-    # id: PyObjectId | str = Field(default_factory=PyObjectId, alias="_id")
     user: UserSchema
     addresses: List[Address] = []
-    
+        
 class Config:
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
@@ -30,9 +25,9 @@ class Config:
         schema_extra = {
             "example": {
                   "user": {
-                        "name": "iron Man",
-                        "email": "ironMan@starkavengers.com",
-                        "password": "hero123!",
+                        "name": "Testando Silva",
+                        "email": "testando@gmail.com",
+                        "password": "*****",
                         "is_active": True,
                         "is_admin": False
                     },

@@ -2,13 +2,14 @@
 Regras e ajustes para usuários (clientes)
 
 """
-
 from typing import List
+from fastapi import HTTPException
+
 import src.models.user as user_models
 import src.models.address as address_models
 from src.schemas.user import UserSchema
 import src.models.cart as cart_models
-from fastapi import HTTPException
+
 
 # Criar usuário
 async def create_user(users_collection, user):
@@ -21,12 +22,14 @@ async def create_user(users_collection, user):
         return user
     raise HTTPException(status_code=404, detail ="Ocorreu um erro ao inserir o usuário!")
     
+    
 # Obter usuário pelo id
 async def get_user(users_collection, user_id):
     user = await user_models.get_user(users_collection, user_id)
     if user:
         return user
     raise HTTPException(status_code=404, detail ="Este id não possui cadastro!")
+    
     
 # Obter lista de usuários    
 async def get_users(users_collection, skip, limit):
@@ -35,6 +38,7 @@ async def get_users(users_collection, skip, limit):
         return users
     return List[UserSchema]
 
+
 # Obter usuário pelo e-mail
 async def get_user_by_email(users_collection, email):
     user = await user_models.get_user_by_email(users_collection, email)
@@ -42,12 +46,14 @@ async def get_user_by_email(users_collection, email):
         return user
     raise HTTPException(status_code=404, detail ='Este e-mail não possui cadastro!')
 
+
 # Atualizar usuário              
 async def update_user(users_collection, user_id, user_data):
     user = await user_models.update_user(users_collection, user_id, user_data)
     if user.modified_count:
         return "Usuário alterado com sucesso!"
     raise HTTPException(status_code=404, detail ="Erro ao atualizar o usuário!")
+          
                 
 # Excluir usuário                  
 async def delete_user(users_collection, address_collection, carts_collection, user_email):

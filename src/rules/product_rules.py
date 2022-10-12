@@ -7,6 +7,7 @@ from fastapi import HTTPException
 import src.models.product as product_models
 from src.rules.cart_rules import delete_product_all_cart
 
+
 # Criar produto
 async def create_product(products_collection, product):
     if product['price'] <= 0.01:
@@ -21,6 +22,7 @@ async def create_product(products_collection, product):
         return await product_models.get_product_by_id(products_collection, new_product.inserted_id)
     raise HTTPException(status_code=203, detail ="O produto não atende os requisitos de criação, não foi possível criá-lo.")
 
+
 # Obter produto pelo id
 async def get_product_by_id(products_collection, product_id):
     product = await product_models.get_product_by_id(products_collection, product_id)
@@ -28,12 +30,14 @@ async def get_product_by_id(products_collection, product_id):
         return product
     raise HTTPException(status_code=404, detail ="Não existe produto com este id!")
 
+
 # Obter produto pelo código
 async def get_product_by_code(products_collection, product_code):
     product = await product_models.get_product_by_code(products_collection, product_code)
     if product:
         return product
     raise HTTPException(status_code=404, detail ="Não existe produto com este código!")
+
 
 # Obter produto pelo nome
 async def get_product_by_name(products_collection, product_name):
@@ -50,6 +54,7 @@ async def update_product(products_collection, product_code, product):
             return "Produto alterado com sucesso!"
         raise HTTPException(status_code=203, detail ="Erro ao atualizar o produto!")
     raise HTTPException(status_code= 404, detail = "Não existe produto com o código informado!")
+
 
 # Excluir produto
 async def delete_product(product_collection, carts_collection, product_code: int):    

@@ -1,15 +1,18 @@
 
 # Consultar os pedidos de um cliente
-GET http://127.0.0.1:8000/order/testando0@gmail.com/skip/0/limit/100
+GET http://127.0.0.1:8000/order/testando@gmail.com/skip/0/limit/100
 Content-Type: application/json
 
+
 ### Consultar quantos carrinhos fechados um cliente possui
-GET http://127.0.0.1:8000/order/count/testando0@gmail.com
+GET http://127.0.0.1:8000/order/count/testando@gmail.com
 Content-Type: application/json
+
 
 ### Consultar os produtos e suas quantidades em carrinhos fechados
 GET http://127.0.0.1:8000/order/items/6341dfb036697cc0c0adf55e
 Content-Type: application/json
+
 
 ### Excluir pedido do cliente
 DELETE  http://127.0.0.1:8000/order/6341dfb036697cc0c0adf55e

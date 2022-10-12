@@ -1,4 +1,3 @@
-from urllib import response
 from fastapi.encoders import jsonable_encoder
 from fastapi import APIRouter, Request, Body, status
 from autentication_jwt import *
@@ -24,11 +23,13 @@ async def route_get_product_by_name(request: Request, name: str):
     response = await product_rules.get_product_by_name(request.app.database.product_collection, name)
     return await process_product_response(response)
 
+
 # get product by code
 @router.get("/code/{code}", response_description="Get a product by code", response_model=ProductResponse)
 async def route_get_product_by_code(code: int, request: Request):
     response = await product_rules.get_product_by_code(request.app.database.product_collection, code)
     return await process_product_response(response)
+
 
 # update product by code
 @router.put("/{code}", response_description="Update a product by code", response_model=ProductResponse)
@@ -36,11 +37,13 @@ async def route_update_product_by_code(code: int, request: Request, product: Pro
     response = await product_rules.update_product(request.app.database.product_collection, code, product)
     return await process_product_response(response)
 
+
 # delete product by code
 @router.delete("/{code}", response_description="Delete a product")
 async def route_delete_product(code: int, request: Request, autorizado: bool = Depends(valida_admin)):
     response = await product_rules.delete_product(request.app.database.product_collection, request.app.database.carts_collection, code)
     return await process_product_response(response)
+
 
 # process result
 async def process_product_response(response):

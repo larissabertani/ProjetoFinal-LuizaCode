@@ -5,7 +5,6 @@ from pytest import mark
 from src.controllers.routes_products_async import router as product_router
 from src.controllers.routes_user_async import router as client_router
 from src.controllers.routes_cart_async import router as cart_router
-
 from src.server.database_test import connect_db, disconnect_db, db
 
 app = FastAPI()
