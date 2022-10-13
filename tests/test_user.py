@@ -54,7 +54,6 @@ async def test_get_user_by_email():
         assert body.get("result").get("email") == body_user.get("email")
         assert body.get("result").get("password") == body_user.get("password")
         
-        #assert body.get("result").get(0).get("name")
 
 @mark.asyncio
 async def test_get_user_by_email_undefined():

@@ -122,6 +122,8 @@ async def test_delete_product_by_code():
         response = client.delete(
             "/products/1234"
         )
+        assert response.status_code >= 400
+
 
 @mark.asyncio        
 async def test_update_product_by_code():
@@ -176,6 +178,24 @@ async def test_create_product_missing_price():
         
         body = response.json()
         assert body.get("detail") == "O valor do produto deve ser superior a R$0,01"
+        
+@mark.asyncio
+async def test_create_product_missing_stock():
+     with TestClient(app) as client:
+        response = client.post(
+            "/products/", json={ 
+                "name": "Ração Premier",
+                "description": "Raças Específicas Lhasa Apso Cães Adultos",
+                "price": 100.10,
+                "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
+                "code": 1243,
+                "type_animal": "dog",
+                "category": "food",
+                "qt_stock": 0},
+            headers=headers)
+        
+        assert response.status_code == 203
+        
         
 @mark.asyncio
 async def test_get_product_by_name():

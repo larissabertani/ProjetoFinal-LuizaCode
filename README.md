@@ -167,7 +167,7 @@ $ pip install -r requirements.txt
 ```
 • Faça a conexão com o MongoDB, criando um arquivo .env e informando a sua string de conexão, conforme o exemplo do arquivo .env.example.
 
-• As libs que serão utilizadas serão:
+• As libs utilizadas serão:
 ```
 $ motor = Driver Python async for MongoDB
 $ pydantic = Data validation for Python
@@ -175,6 +175,15 @@ $ pydantic = Data validation for Python
 • Para rodar a aplicação local, utilize o comando:
 ```
 $ uvicorn main:app --reload
+```
+• Para utilizar mecanismos de log fazer a importação do módulo:
+```
+$ logging 
+```
+• Para utilizar os recursos de autorização e autenticação utilizar os módulos:
+```
+$ pip install PyJWT
+$ pip install cryptography 
 ```
 • Será necessário instalar o Docker, que poderá ser encontrado clicando <a href="https://docs.docker.com/desktop/install/windows-install/">AQUI</a>.
 
@@ -190,7 +199,7 @@ Após esse comando:
 $ docker run -p 8000:8000 shopping-cart
 
 ```
-• Após a executação dos comandos, será possível acessar o projeto na rota: http://127.0.0.1:8000/docs. Este link contém o swagger da aplicação. A aplicação foi hospedada no Heroku, além de ter sido feito um deploy no Docker.
+• Após a executação dos comandos, será possível acessar o projeto na rota: http://127.0.0.1:8000/docs, que é a imagem gerada no Docker. A aplicação foi hospedada no Heroku, além de ter sido feito um deploy no Docker, https://projetofinal-petshop.herokuapp.com/docs#/, disponibilizando o swagger da aplicação.
 
 <h3 id="apresentação-das-atividades">Apresentação das atividades:</h3>
 
@@ -198,7 +207,7 @@ $ docker run -p 8000:8000 shopping-cart
 <br/>
 
 <p>
-<a href="#gestao-do-usuario">Gestão do usuário</a> | <a href="#gestao-do-endereco-do-usuario">Gestão do endereço do usuário</a> | <a href="#gestao-dos-produtos">Gestão dos produtos</a> | <a href="#criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</a> | <a href="#formulando-pedido-fechado">Formulando um pedido fechado</a> | <a href="#testando-o-projeto">Testando o projeto</a> 
+<a href="#gestao-do-usuario">Gestão do usuário</a> | <a href="#gestao-do-endereco-do-usuario">Gestão do endereço do usuário</a> | <a href="#gestao-dos-produtos">Gestão dos produtos</a> | <a href="#criando-um-carrinho-para-o-usuario">Criando um carrinho de compras para o usuário</a> | <a href="#formulando-pedido-fechado">Formulando um pedido fechado</a> | <a href="#seguranca">Segurança</a> | <a href="#log">LOG</a> | <a href="#testando-o-projeto">Testando o projeto</a>
 </p>
 
 <p>E o desenvolvimeno da aplicação foi realizado dentro das seguintes pastas:
@@ -747,6 +756,21 @@ Do contrário, se não houver um pedido com o order_id informado na requisição
   "detail": "O número de pedido informado não está correto"
 }
 ```
+<h3 id="seguranca">Segurança</h3>
+
+A API utiliza recursos de autorização e autenticação JWT.
+Para funcionamento dos recursos, será necessário baixar as bibliotecas:
+- cryptography;
+- PyJWT.
+As chaves públicas e privadas foram disponibilizadas no arquivo autentication_jwt.py, junto aos métodos de validação do token e validação de usuário administrador do sistema. 
+A regra de negócio foi definida como acesso a algumas requisições apenas pelo administrador do sistema que precisará passar o parâmetro Authorization: Bearer chavedeautenticacao ao enviar a requisição para a API.
+Para fazer a validação, foi passado o parâmetro autorizado: bool = Depends(valida_admin) nas rotas que são permitidas apenas para administrador do sistema.
+
+<h3 id="log">LOG</h3>
+
+O projeto gera mensagens de log definidas nos métodos criados no arquivo logs.py.
+Foram criados através do import logging, dois métodos que fazem a configuração de logging e criação do arquivo de registro e cria registros de logs de ERRO e INFO nos arquivos logs_error.log e logs_info.log, respectivamente.
+Para validação e registro das mensagens de log, os métodos logs.info e logs.erro foram chamados dentro das models de cada função do carrinho de compra, dessa forma, sempre que houver alguma requisição, haverá o registro de erro ou informação dentro do respectivo arquivo.
 
 <h3 id="testando-o-projeto">Testando o projeto</h3>
 
@@ -795,7 +819,9 @@ Para o desenvolvimento da aplicação, utilizamos as seguintes tecnologias:
 • FastAPI: Framework utilizado para realizar as requisições e criar o swagger;</br>
 • Uvicorn: Utilizado para subir o servidor para que as rotas do FastAPI pudessem ser acessadas;</br>
 • Docker: Plataforma para para conteinerizar a aplicação, para que ela se tornasse portátil para o Heroku;</br>
-• Heroku: Utilizado para que fosse possível fazer o deploy da aplicação e, dessa forma, disponibilizá-la para os avaliadores.
+• Heroku: Utilizado para que fosse possível fazer o deploy da aplicação e, dessa forma, disponibilizá-la para os avaliadores;</br>
+• PyJWT: Recurso de autorização e autenticação através de token;</br>
+• Logging: Geração de mensagens de log.
 </p>
 
 <h3 id="pessoas-contribuidoras">Pessoas Contribuidoras</h3>

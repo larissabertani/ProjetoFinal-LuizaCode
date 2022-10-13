@@ -111,3 +111,57 @@ async def test_create_cart_with_missing_user():
         assert fake_cart.status_code == 404
         assert body_cart.get("detail") =='Não há usuário cadastrado com este id.'
 
+
+@mark.asyncio
+async def test_delete_cart():
+    with TestClient(app) as client:
+        fake_client = client.post(
+            "/users/", json={"name": "Bruna", "email": "teste@gmail.com", "password": "265"}
+        )
+        body_client = fake_client.json().get("result") 
+        new_address = [
+        {
+            "street": "i know ",
+            "number": 10,
+            "zipcode": "9999-030",
+            "district": "Grass Lands",
+            "city": "stark tower",
+            "state": "Parallel Universe", 
+            "is_delivery": True                     
+        }]
+      
+        fake_address = client.post(
+            f"/address/teste@gmail.com", json=new_address
+        )
+        body_address = fake_address.json()
+        
+        fake_product = client.post(
+            "/products/", json={ 
+                "name": "Ração Premier",
+                "description": "Raças Específicas Lhasa Apso Cães Adultos",
+                "price": 124.9,
+                "image": "https://static.petz.com.br/fotos/1656091760542.jpg",
+                "code": 1243,
+                "type_animal": "dog",
+                "category": "food",
+                "qt_stock": 15},
+            headers=headers)
+        body_product = fake_product.json().get("result")
+        fake_cart = client.post(
+            f"/cart/{body_client.get('_id')}/{body_product.get('code')}"
+        )
+        body_cart = fake_cart.json().get("result") 
+        
+        fake_cart = client.delete("/cart/teste@gmail.com")
+        body_cart = fake_cart.json()
+        
+        assert fake_cart.status_code == 200
+        assert body_cart.get("description") =="Carrinho deletado com sucesso!"
+
+@mark.asyncio
+async def test_delete_cart_error():
+    with TestClient(app) as client:
+               
+        fake_cart = client.delete("/cart/teste@gmail.com")
+        
+        assert fake_cart.status_code >= 400

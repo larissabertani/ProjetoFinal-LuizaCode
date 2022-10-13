@@ -1,2 +1,2 @@
 [run]
-omit = tests/*, main.py, src/server/database.py
+omit = tests/*, main.py, src/server/*, src/schemas/*, src/models/*, src/utils/*, autentication_jwt.py
